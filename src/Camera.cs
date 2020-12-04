@@ -11,7 +11,7 @@ namespace TeamSpectate.src
         public static bool Locked { get; set; }
         public override void ModifyScreenPosition()
         {
-            if (Locked && Target != null && Main.player[(int)Target].active)
+            if (Locked && Target != null && Main.player[(int)Target].active && (Main.player[(int)Target].team == Main.LocalPlayer.team || Main.player[(int)Target].team == 0))
             {
                 if (Main.player[(int)Target].dead)
                 {
