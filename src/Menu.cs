@@ -51,6 +51,7 @@ namespace TeamSpectate.src
                 buttons[i] = button;
             }
         }
+
         private void Button_OnClick(UIMouseEvent evt, UIElement listeningElement)
         {
             for (int i = 0; i < buttons.Length; i++)

@@ -5,5 +5,4 @@ hideCode = false
 hideResources = false
 includeSource = false
 buildIgnore = vs/*, *.csproj, *.sln, *.pidb, *.userprefs, *.user, obj/*, bin/*
-side = Client
 homepage =

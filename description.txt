@@ -1,5 +1,6 @@
 Team Spectate lets you view your team mates' screen.
 
 Special thanks:
+Mirsario for fixing unloaded chunks
 pollen__ for giving me his player render code.
 bafto for multiplayer testing

@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
+using System.IO;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -54,6 +55,21 @@ namespace TeamSpectate.src
                             UserInterface.Draw(Main.spriteBatch, _lastUpdateUiGameTime);
                         return true;
                     }, InterfaceScaleType.UI));
+            }
+        }
+
+        /// <summary>
+        /// for world section fix
+        /// </summary>
+        /// <param name="reader"></param>
+        /// <param name="whoAmI"></param>
+        public override void HandlePacket(BinaryReader reader, int whoAmI)
+        {
+            switch (reader.ReadByte())
+            {
+                case 0:
+                    RemoteClient.CheckSection(whoAmI, reader.ReadVector2());
+                    break;
             }
         }
     }
