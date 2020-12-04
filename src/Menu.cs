@@ -14,8 +14,8 @@ namespace TeamSpectate.src
         {
             MarginLeft = x;
             MarginTop = y;
-            Width.Set(width, 0f);
-            Height.Set(height, 0f);
+            MaxWidth.Set(width, 0f);
+            MaxHeight.Set(height, 0f);
             SetPadding(7);
 
             buttonGrid = new UIGrid(7);
@@ -86,6 +86,12 @@ namespace TeamSpectate.src
 
             // Update oldActivePlayersCount
             oldActivePlayersCount = Main.ActivePlayersCount;
+
+            // Dynamic width/height
+            Height.Set(20 + buttonGrid.GetTotalHeight(), 0);
+            Width.Set(20 + buttonGrid.GetRowWidth(), 0);
+
+            MarginLeft = 1390 + MaxWidth.Pixels - Width.Pixels;
         }
     }
 }

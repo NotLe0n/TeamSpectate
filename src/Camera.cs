@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.ModLoader;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace TeamSpectate.src
 {
@@ -14,7 +14,7 @@ namespace TeamSpectate.src
         {
             if (Locked && Target != null && Main.player[(int)Target].active)
             {
-                if (Main.player[(int)Target].dead || (Main.player[(int)Target].team == Main.LocalPlayer.team || Main.player[(int)Target].team == 0))
+                if (Main.player[(int)Target].dead || (Main.player[(int)Target].team != Main.LocalPlayer.team && Main.player[(int)Target].team != 0))
                 {
                     Target = null;
                     Locked = false;

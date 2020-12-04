@@ -35,17 +35,17 @@ namespace TeamSpectate.src
             }
         }
 
-        public List<UIElement> _items = new List<UIElement>();
-        protected UIScrollbar _scrollbar;
-        internal UIElement _innerList = new UIInnerList();
-        private float _innerListHeight;
+        public List<UIElement> items = new List<UIElement>();
+        protected UIScrollbar scrollbar;
+        internal UIElement innerList = new UIInnerList();
+        private float innerListHeight;
         public float ListPadding = 5f;
 
         public int Count
         {
             get
             {
-                return _items.Count;
+                return items.Count;
             }
         }
 
@@ -54,28 +54,37 @@ namespace TeamSpectate.src
         public UIGrid(int columns = 1)
         {
             cols = columns;
-            _innerList.OverflowHidden = false;
-            _innerList.Width.Set(0f, 1f);
-            _innerList.Height.Set(0f, 1f);
+            innerList.OverflowHidden = false;
+            innerList.Width.Set(0f, 1f);
+            innerList.Height.Set(0f, 1f);
             OverflowHidden = true;
-            Append(_innerList);
+            Append(innerList);
         }
 
         public float GetTotalHeight()
         {
-            return _innerListHeight;
+            return innerListHeight;
+        }
+        public float GetRowWidth()
+        {
+            float width = 0;
+            for (int i = 0; i < items.Count; i++)
+            {
+                width = MathHelper.Clamp(items.Count * (items[i].Width.Pixels + ListPadding * 2), items[i].Width.Pixels, 300);
+            }
+            return width;
         }
 
         public void Goto(ElementSearchMethod searchMethod, bool center = false)
         {
-            for (int i = 0; i < _items.Count; i++)
+            for (int i = 0; i < items.Count; i++)
             {
-                if (searchMethod(_items[i]))
+                if (searchMethod(items[i]))
                 {
-                    _scrollbar.ViewPosition = _items[i].Top.Pixels;
+                    scrollbar.ViewPosition = items[i].Top.Pixels;
                     if (center)
                     {
-                        _scrollbar.ViewPosition = _items[i].Top.Pixels - GetInnerDimensions().Height / 2 + _items[i].GetOuterDimensions().Height / 2;
+                        scrollbar.ViewPosition = items[i].Top.Pixels - GetInnerDimensions().Height / 2 + items[i].GetOuterDimensions().Height / 2;
                     }
                     return;
                 }
@@ -84,23 +93,23 @@ namespace TeamSpectate.src
 
         public virtual void Add(UIElement item)
         {
-            _items.Add(item);
-            _innerList.Append(item);
+            items.Add(item);
+            innerList.Append(item);
             UpdateOrder();
-            _innerList.Recalculate();
+            innerList.Recalculate();
         }
 
         public virtual bool Remove(UIElement item)
         {
-            _innerList.RemoveChild(item);
+            innerList.RemoveChild(item);
             UpdateOrder();
-            return _items.Remove(item);
+            return items.Remove(item);
         }
 
         public virtual void Clear()
         {
-            _innerList.RemoveAllChildren();
-            _items.Clear();
+            innerList.RemoveAllChildren();
+            items.Clear();
         }
 
         public override void Recalculate()
@@ -112,9 +121,9 @@ namespace TeamSpectate.src
         public override void ScrollWheel(UIScrollWheelEvent evt)
         {
             base.ScrollWheel(evt);
-            if (_scrollbar != null)
+            if (scrollbar != null)
             {
-                _scrollbar.ViewPosition -= evt.ScrollWheelValue;
+                scrollbar.ViewPosition -= evt.ScrollWheelValue;
             }
         }
 
@@ -123,47 +132,47 @@ namespace TeamSpectate.src
             base.RecalculateChildren();
             float top = 0f;
             float left = 0f;
-            for (int i = 0; i < _items.Count; i++)
+            for (int i = 0; i < items.Count; i++)
             {
-                _items[i].Top.Set(top, 0f);
-                _items[i].Left.Set(left, 0f);
-                _items[i].Recalculate();
+                items[i].Top.Set(top, 0f);
+                items[i].Left.Set(left, 0f);
+                items[i].Recalculate();
                 if (i % cols == cols - 1)
                 {
-                    top += _items[i].GetOuterDimensions().Height + ListPadding;
+                    top += items[i].GetOuterDimensions().Height + ListPadding;
                     left = 0;
                 }
                 else
                 {
-                    left += _items[i].GetOuterDimensions().Width + ListPadding;
+                    left += items[i].GetOuterDimensions().Width + ListPadding;
                 }
                 //num += this._items[i].GetOuterDimensions().Height + this.ListPadding;
             }
-            if (_items.Count > 0)
+            if (items.Count > 0)
             {
-                top += ListPadding + _items[0].GetOuterDimensions().Height;
+                top += ListPadding + items[0].GetOuterDimensions().Height;
             }
-            _innerListHeight = top;
+            innerListHeight = top;
         }
 
         private void UpdateScrollbar()
         {
-            if (_scrollbar == null)
+            if (scrollbar == null)
             {
                 return;
             }
-            _scrollbar.SetView(GetInnerDimensions().Height, _innerListHeight);
+            scrollbar.SetView(GetInnerDimensions().Height, innerListHeight);
         }
 
         public void SetScrollbar(UIScrollbar scrollbar)
         {
-            _scrollbar = scrollbar;
+            this.scrollbar = scrollbar;
             UpdateScrollbar();
         }
 
         public void UpdateOrder()
         {
-            _items.Sort(new Comparison<UIElement>(SortMethod));
+            items.Sort(new Comparison<UIElement>(SortMethod));
             UpdateScrollbar();
         }
 
@@ -180,7 +189,7 @@ namespace TeamSpectate.src
             {
                 list.Add(item);
             }
-            foreach (UIElement current in _items)
+            foreach (UIElement current in items)
             {
                 list.AddRange(current.GetSnapPoints());
             }
@@ -189,9 +198,9 @@ namespace TeamSpectate.src
 
         protected override void DrawSelf(SpriteBatch spriteBatch)
         {
-            if (_scrollbar != null)
+            if (scrollbar != null)
             {
-                _innerList.Top.Set(-_scrollbar.GetValue(), 0f);
+                innerList.Top.Set(-scrollbar.GetValue(), 0f);
             }
             Recalculate();
         }
