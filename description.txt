@@ -1,6 +1,23 @@
 Team Spectate lets you view your team mates' screen.
 
+This mod only works in Multiplayer. The Menu button is below the team selector.
+
+For a Changlog and more information visit my homepage!
+
+Contact [c/66EEFF:TheLonelySheep#7696] on discord if you have any problems.
+
 Special thanks:
-Mirsario for fixing unloaded chunks
-pollen__ for giving me his player render code.
-bafto for multiplayer testing
+[c/66EEFF:Mirsario] for fixing unloaded chunks
+[c/66EEFF:pollen__] for giving me his player render code.
+[c/66EEFF:bafto] for multiplayer testing
+
+_________________________
+[c/FFE900:How it works:]
+
+If you click on a player button other than your own you start spectating the other player.
+To exit the spectating mode press the player button again or press your own player.
+
+You can NOT spectate players that are dead, in a different team than you, or don't exist.
+Everyone can spectate players that are in no team.
+
+If you can't spectate a player their player head button turn grey.

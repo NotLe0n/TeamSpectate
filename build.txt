@@ -1,8 +1,8 @@
 displayName = Team Spectate
 author = TheLonelySheep
-version = 0.1
+version = 1.0
 hideCode = false
 hideResources = false
 includeSource = false
 buildIgnore = vs/*, *.csproj, *.sln, *.pidb, *.userprefs, *.user, obj/*, bin/*
-homepage =
+homepage = https://forums.terraria.org/index.php?threads/team-spectate.101030/
