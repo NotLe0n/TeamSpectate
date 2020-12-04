@@ -1,0 +1,9 @@
+displayName = Team Spectate
+author = TheLonelySheep
+version = 0.1
+hideCode = false
+hideResources = false
+includeSource = false
+buildIgnore = vs/*, *.csproj, *.sln, *.pidb, *.userprefs, *.user, obj/*, bin/*
+side = Client
+homepage =
