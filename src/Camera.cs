@@ -1,5 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
+using System.Linq;
 using Terraria;
+using Terraria.GameInput;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -14,7 +16,7 @@ namespace TeamSpectate.src
         {
             if (Locked && Target != null && Main.player[(int)Target].active)
             {
-                if (Main.player[(int)Target].dead || (Main.player[(int)Target].team != Main.LocalPlayer.team && Main.player[(int)Target].team != 0))
+                if (Main.player[(int)Target].dead || Main.player[(int)Target] == Main.player[Main.myPlayer] || (Main.player[(int)Target].team != Main.LocalPlayer.team && Main.player[(int)Target].team != 0))
                 {
                     Target = null;
                     Locked = false;
@@ -35,6 +37,22 @@ namespace TeamSpectate.src
                 modPacket.WriteVector2(Main.screenPosition);
 
                 modPacket.Send();
+            }
+        }
+        int selectedTarget = 0;
+        public override void ProcessTriggers(TriggersSet triggersSet)
+        {
+            if (TeamSpectate.prevPlayer.JustPressed && selectedTarget > 0)
+            {
+                selectedTarget--;
+                Locked = true;
+                Target = selectedTarget;
+            }
+            if (TeamSpectate.nextPlayer.JustPressed && selectedTarget < Main.player.Where(p => p?.active == true).Count())
+            {
+                selectedTarget++;
+                Locked = true;
+                Target = selectedTarget;
             }
         }
     }

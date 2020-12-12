@@ -13,13 +13,13 @@ namespace TeamSpectate.src
         public override void OnInitialize()
         {
             Button = new UIImageButton(ModContent.GetTexture("TeamSpectate/Assets/cameraButton"));
-            Button.MarginLeft = 1695;
-            Button.MarginTop = 570;
+            Button.HAlign = 0.896f;
+            Button.VAlign = 0.57f;
             Button.OnClick += (elm, evt) =>
             {
                 if (menu == null)
                 {
-                    menu = new Menu(1390, 570, 300, 250);
+                    menu = new Menu(300, 250);
                     Append(menu);
                 }
                 else
@@ -33,12 +33,26 @@ namespace TeamSpectate.src
         public override void Draw(SpriteBatch spriteBatch)
         {
             base.Draw(spriteBatch);
-            Button.MarginTop = Main.mapStyle == 0 || Main.mapStyle == 2 ? 305 : (float)570;
+            Button.VAlign = Main.mapStyle == 0 || Main.mapStyle == 2 ? 0.32f : 0.57f;
 
             if (menu != null)
             {
-                menu.MarginTop = Main.mapStyle == 0 || Main.mapStyle == 2 ? 305 : (float)570;
+                menu.VAlign = Main.mapStyle == 0 || Main.mapStyle == 2 ? 0.33f : 0.58f;
             }
+        }
+    }
+    public class TeamSpectateDeadUI : UIState
+    {
+        Menu deadMenu;
+        public override void OnInitialize()
+        {
+            deadMenu = new Menu(300, 250);
+            Append(deadMenu);
+        }
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            base.Draw(spriteBatch);
+            deadMenu.VAlign = Main.mapStyle == 0 || Main.mapStyle == 2 ? 0.2f : 0.4f;
         }
     }
 }

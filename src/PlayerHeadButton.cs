@@ -1,8 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Linq;
 using Terraria;
 using Terraria.GameContent.UI.Elements;
 using Terraria.ModLoader;
+using Terraria.UI;
 
 namespace TeamSpectate.src
 {
@@ -10,11 +12,28 @@ namespace TeamSpectate.src
     {
         public Player Player;
         private string hovertext;
+        public int index => Main.player.ToList().FindIndex(x => x == Player);
+
         public PlayerHeadButton(Player player) : base(ModContent.GetTexture("TeamSpectate/Assets/empty"))
         {
             Player = player;
-            hovertext = Player.name;
+            hovertext = $"[{index}] {Player.name}";
         }
+
+        public override void Click(UIMouseEvent evt)
+        {
+            if (Player == Main.LocalPlayer) // if you click the button for your own player, the camera gets reset
+            {
+                Camera.Locked = false;
+                Camera.Target = null; // reset target
+            }
+            else
+            {
+                Camera.Locked = !Camera.Locked;
+                Camera.Target = Camera.Target == null ? index : (int?)null; // set target
+            }
+        }
+
         public override void Draw(SpriteBatch spriteBatch)
         {
             base.Draw(spriteBatch);
@@ -38,7 +57,7 @@ namespace TeamSpectate.src
             // hair
             spriteBatch.Draw(Main.playerHairTexture[Player.hair], drawpos, headBounds, invalid ? Color.Gray : Player.hairColor, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1f);
 
-            hovertext = invalid ? Player.name + "\nThis player is in a different team than you or doesn't exist" : Player.name;
+            hovertext = invalid ? $"[{index}] {Player.name}" + "\nThis player is in a different team than you or doesn't exist" : $"[{Main.player.ToList().FindIndex(x => x == Player)}] {Player.name}";
         }
     }
 }

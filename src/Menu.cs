@@ -1,19 +1,18 @@
 ﻿using Microsoft.Xna.Framework;
+using System.Linq;
 using Terraria;
 using Terraria.GameContent.UI.Elements;
-using Terraria.UI;
 
 namespace TeamSpectate.src
 {
     public class Menu : UIPanel
     {
-        private PlayerHeadButton[] buttons = new PlayerHeadButton[Main.maxPlayers];
         private UIGrid buttonGrid;
-        UIScrollbar scrollbar;
-        public Menu(float x, float y, float width, float height)
+        private UIScrollbar scrollbar;
+        private int realPlayerCount => Main.player.Where(p => p?.active == true).Count();
+
+        public Menu(float width, float height)
         {
-            MarginLeft = x;
-            MarginTop = y;
             MaxWidth.Set(width, 0f);
             MaxHeight.Set(height, 0f);
             SetPadding(7);
@@ -26,9 +25,10 @@ namespace TeamSpectate.src
 
             AppendButtons();
         }
+
         public void AppendButtons()
         {
-            if (Main.ActivePlayersCount > 42)
+            if (realPlayerCount > 42)
             {
                 scrollbar = new UIScrollbar();
                 scrollbar.Left.Set(-20f, 1f);
@@ -40,58 +40,34 @@ namespace TeamSpectate.src
                 buttonGrid.SetScrollbar(scrollbar);
                 Append(scrollbar);
             }
-            for (int i = 0; i < Main.ActivePlayersCount; i++)
-            {
-                var button = new PlayerHeadButton(Main.player[i])
-                {
-                    Id = i.ToString()
-                };
-                button.OnClick += Button_OnClick;
-                buttonGrid.Add(button);
-                buttons[i] = button;
-            }
-        }
-
-        private void Button_OnClick(UIMouseEvent evt, UIElement listeningElement)
-        {
-            for (int i = 0; i < buttons.Length; i++)
-            {
-                if (buttons[i] != null && listeningElement.Id == buttons[i].Id) // gets the button you pressed if it exists
-                {
-                    if (i == Main.myPlayer) // if you click the button for your own player, the camera gets reset
-                    {
-                        Camera.Locked = false;
-                        Camera.Target = null; // reset target
-                    }
-                    else
-                    {
-                        Camera.Locked = !Camera.Locked;
-                        Camera.Target = Camera.Target == null ? i : (int?)null; // set target
-                    }
-                }
-            }
+            for (int i = 0; i < Main.maxPlayers; i++)
+                if (Main.player[i].active)
+                    buttonGrid.Add(new PlayerHeadButton(Main.player[i]));
+                
+            
         }
 
         int oldActivePlayersCount;
         public override void Update(GameTime gameTime)
         {
             // Check if player Count has changed and update buttons if it has
-            if (Main.ActivePlayersCount != oldActivePlayersCount)
+            if (realPlayerCount != oldActivePlayersCount)
             {
                 if (scrollbar != null)
                     scrollbar.Remove();
                 buttonGrid.Clear();
                 AppendButtons();
+                buttonGrid.UpdateOrder();
             }
 
             // Update oldActivePlayersCount
-            oldActivePlayersCount = Main.ActivePlayersCount;
+            oldActivePlayersCount = realPlayerCount;
 
             // Dynamic width/height
             Height.Set(20 + buttonGrid.GetTotalHeight(), 0);
             Width.Set(20 + buttonGrid.GetRowWidth(), 0);
 
-            MarginLeft = 1390 + MaxWidth.Pixels - Width.Pixels;
+            Left.Set(Main.screenWidth / 1.3812949640287769784172661870504f + MaxWidth.Pixels - Width.Pixels - 7, 0);
         }
     }
 }

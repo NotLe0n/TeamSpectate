@@ -21,3 +21,19 @@ You can NOT spectate players that are dead, in a different team than you, or don
 Everyone can spectate players that are in no team.
 
 If you can't spectate a player their player head button turn grey.
+
+You can also cycle different players using a hotkey (you have to set it fist)
+
+_________________________
+[c/FFE900:Recent Chnages:]
+
+v.1.1
+- Added Hotkeys
+- You can now spectate other players while you're dead
+- The Player id now shows next to the players name when you hover over the button
+- Fixed bug when trying to spectate yourself
+- Fixed bug with player ids
+- Fixed button not being rendered correctly at lower resolutions (be sure to tell me if it's still broken)
+
+v1.0
+- Release
