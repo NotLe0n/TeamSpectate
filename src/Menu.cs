@@ -67,7 +67,7 @@ namespace TeamSpectate.src
             Height.Set(20 + buttonGrid.GetTotalHeight(), 0);
             Width.Set(20 + buttonGrid.GetRowWidth(), 0);
 
-            Left.Set(Main.screenWidth / 1.3812949640287769784172661870504f + MaxWidth.Pixels - Width.Pixels - 7, 0);
+            Left.Set(50 - MaxWidth.Pixels - Width.Pixels, 1);
         }
     }
 }

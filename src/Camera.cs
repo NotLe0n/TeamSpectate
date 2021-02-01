@@ -14,7 +14,7 @@ namespace TeamSpectate.src
 
         public override void ModifyScreenPosition()
         {
-            if (Locked && Target != null && Main.player[(int)Target].active)
+            if (Locked && Target != null && Target < Main.player.Length && Main.player[(int)Target].active)
             {
                 if (Main.player[(int)Target].dead || Main.player[(int)Target] == Main.player[Main.myPlayer] || (Main.player[(int)Target].team != Main.LocalPlayer.team && Main.player[(int)Target].team != 0))
                 {

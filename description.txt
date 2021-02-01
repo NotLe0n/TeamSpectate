@@ -4,7 +4,7 @@ This mod only works in Multiplayer. The Menu button is below the team selector.
 
 For a Changlog and more information visit my homepage!
 
-Contact [c/66EEFF:TheLonelySheep#7696] on discord if you have any problems.
+Contact [c/66EEFF:NotLe0n#7696] on discord if you have any problems.
 
 Special thanks:
 [c/66EEFF:Mirsario] for fixing unloaded chunks
@@ -26,6 +26,9 @@ You can also cycle different players using a hotkey (you have to set it fist)
 
 _________________________
 [c/FFE900:Recent Chnages:]
+v.1.1.0.2
+- Fixed the buttons postion for real this time
+- Changed author name
 
 v.1.1
 - Added Hotkeys

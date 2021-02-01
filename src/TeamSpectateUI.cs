@@ -13,7 +13,7 @@ namespace TeamSpectate.src
         public override void OnInitialize()
         {
             Button = new UIImageButton(ModContent.GetTexture("TeamSpectate/Assets/cameraButton"));
-            Button.HAlign = 0.896f;
+            Button.Left.Set(-225, 1);
             Button.VAlign = 0.57f;
             Button.OnClick += (elm, evt) =>
             {

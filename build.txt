@@ -1,6 +1,6 @@
 displayName = Team Spectate
-author = TheLonelySheep
-version = 1.1
+author = NotLe0n
+version = 1.1.0.2
 hideCode = false
 hideResources = false
 includeSource = false
