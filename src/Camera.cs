@@ -27,11 +27,12 @@ namespace TeamSpectate.src
                 }
             }
         }
+
         public override void PostUpdate()
         {
-            if (player.whoAmI == Main.myPlayer && Main.netMode == NetmodeID.MultiplayerClient && Main.GameUpdateCount % 10 == 0)
+            if (Player.whoAmI == Main.myPlayer && Main.netMode == NetmodeID.MultiplayerClient && Main.GameUpdateCount % 10 == 0)
             {
-                ModPacket modPacket = mod.GetPacket();
+                ModPacket modPacket = Mod.GetPacket();
 
                 modPacket.Write((byte)0); //MessageId
                 modPacket.WriteVector2(Main.screenPosition);
@@ -39,16 +40,17 @@ namespace TeamSpectate.src
                 modPacket.Send();
             }
         }
+
         int selectedTarget = 0;
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
-            if (TeamSpectate.prevPlayer.JustPressed && selectedTarget > 0)
+            if (HotkeyLoader.prevPlayer.JustPressed && selectedTarget > 0)
             {
                 selectedTarget--;
                 Locked = true;
                 Target = selectedTarget;
             }
-            if (TeamSpectate.nextPlayer.JustPressed && selectedTarget < Main.player.Where(p => p?.active == true).Count())
+            if (HotkeyLoader.nextPlayer.JustPressed && selectedTarget < Main.player.Where(p => p?.active == true).Count())
             {
                 selectedTarget++;
                 Locked = true;

@@ -10,9 +10,10 @@ namespace TeamSpectate.src
     {
         Menu menu;
         UIImageButton Button;
+
         public override void OnInitialize()
         {
-            Button = new UIImageButton(ModContent.GetTexture("TeamSpectate/Assets/cameraButton"));
+            Button = new UIImageButton(ModContent.Request<Texture2D>("TeamSpectate/Assets/cameraButton", ReLogic.Content.AssetRequestMode.ImmediateLoad));
             Button.Left.Set(-225, 1);
             Button.VAlign = 0.57f;
             Button.OnClick += (elm, evt) =>
@@ -30,6 +31,7 @@ namespace TeamSpectate.src
             };
             Append(Button);
         }
+
         public override void Draw(SpriteBatch spriteBatch)
         {
             base.Draw(spriteBatch);
@@ -41,6 +43,7 @@ namespace TeamSpectate.src
             }
         }
     }
+
     public class TeamSpectateDeadUI : UIState
     {
         Menu deadMenu;

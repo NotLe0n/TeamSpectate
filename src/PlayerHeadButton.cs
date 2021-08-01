@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using System.Linq;
 using Terraria;
+using Terraria.GameContent;
 using Terraria.GameContent.UI.Elements;
 using Terraria.ModLoader;
 using Terraria.UI;
@@ -14,7 +15,7 @@ namespace TeamSpectate.src
         private string hovertext;
         public int index => Main.player.ToList().FindIndex(x => x == Player);
 
-        public PlayerHeadButton(Player player) : base(ModContent.GetTexture("TeamSpectate/Assets/empty"))
+        public PlayerHeadButton(Player player) : base(ModContent.Request<Texture2D>("TeamSpectate/Assets/empty", ReLogic.Content.AssetRequestMode.ImmediateLoad))
         {
             Player = player;
             hovertext = $"[{index}] {Player.name}";
@@ -49,13 +50,13 @@ namespace TeamSpectate.src
             bool invalid = (Player == null || !Player.active || Player.team != Main.LocalPlayer.team && Player.team != 0);
 
             // head
-            spriteBatch.Draw(Main.playerTextures[0, 0], drawpos, headBounds, invalid ? Color.Gray : Player.skinColor, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1f);
+            spriteBatch.Draw(TextureAssets.Players[0, 0].Value, drawpos, headBounds, invalid ? Color.Gray : Player.skinColor, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1f);
             // eyes
-            spriteBatch.Draw(Main.playerTextures[0, 2], drawpos, headBounds, invalid ? Color.Gray : Player.eyeColor, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1f);
+            spriteBatch.Draw(TextureAssets.Players[0, 2].Value, drawpos, headBounds, invalid ? Color.Gray : Player.eyeColor, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1f);
             // sclera
-            spriteBatch.Draw(Main.playerTextures[0, 1], drawpos, headBounds, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1f);
+            spriteBatch.Draw(TextureAssets.Players[0, 1].Value, drawpos, headBounds, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1f);
             // hair
-            spriteBatch.Draw(Main.playerHairTexture[Player.hair], drawpos, headBounds, invalid ? Color.Gray : Player.hairColor, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1f);
+            spriteBatch.Draw(TextureAssets.PlayerHair[Player.hair].Value, drawpos, headBounds, invalid ? Color.Gray : Player.hairColor, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1f);
 
             hovertext = invalid ? $"[{index}] {Player.name}" + "\nThis player is in a different team than you or doesn't exist" : $"[{Main.player.ToList().FindIndex(x => x == Player)}] {Player.name}";
         }

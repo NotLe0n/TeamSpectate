@@ -43,8 +43,6 @@ namespace TeamSpectate.src
             for (int i = 0; i < Main.maxPlayers; i++)
                 if (Main.player[i].active)
                     buttonGrid.Add(new PlayerHeadButton(Main.player[i]));
-                
-            
         }
 
         int oldActivePlayersCount;

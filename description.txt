@@ -26,11 +26,14 @@ You can also cycle different players using a hotkey (you have to set it fist)
 
 _________________________
 [c/FFE900:Recent Chnages:]
-v.1.1.0.2
+v2.0
+- Ported to 1.4
+
+v1.1.0.2
 - Fixed the buttons postion for real this time
 - Changed author name
 
-v.1.1
+v1.1
 - Added Hotkeys
 - You can now spectate other players while you're dead
 - The Player id now shows next to the players name when you hover over the button
