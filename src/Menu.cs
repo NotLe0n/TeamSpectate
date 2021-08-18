@@ -7,9 +7,9 @@ namespace TeamSpectate.src
 {
     public class Menu : UIPanel
     {
-        private UIGrid buttonGrid;
+        private readonly UIGrid buttonGrid;
         private UIScrollbar scrollbar;
-        private int realPlayerCount => Main.player.Where(p => p?.active == true).Count();
+        private static int RealPlayerCount => Main.player.Where(p => p?.active == true).Count();
 
         public Menu(float width, float height)
         {
@@ -28,7 +28,7 @@ namespace TeamSpectate.src
 
         public void AppendButtons()
         {
-            if (realPlayerCount > 42)
+            if (RealPlayerCount > 42)
             {
                 scrollbar = new UIScrollbar();
                 scrollbar.Left.Set(-20f, 1f);
@@ -49,7 +49,7 @@ namespace TeamSpectate.src
         public override void Update(GameTime gameTime)
         {
             // Check if player Count has changed and update buttons if it has
-            if (realPlayerCount != oldActivePlayersCount)
+            if (RealPlayerCount != oldActivePlayersCount)
             {
                 if (scrollbar != null)
                     scrollbar.Remove();
@@ -59,7 +59,7 @@ namespace TeamSpectate.src
             }
 
             // Update oldActivePlayersCount
-            oldActivePlayersCount = realPlayerCount;
+            oldActivePlayersCount = RealPlayerCount;
 
             // Dynamic width/height
             Height.Set(20 + buttonGrid.GetTotalHeight(), 0);

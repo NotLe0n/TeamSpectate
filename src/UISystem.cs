@@ -1,9 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -36,6 +32,8 @@ namespace TeamSpectate.src
         {
             UI = deadUI = null;
             UserInterface = deadUserInterface = null;
+            Camera.Target = null;
+            Camera.Locked = false;
         }
 
         private GameTime _lastUpdateUiGameTime;
@@ -51,9 +49,6 @@ namespace TeamSpectate.src
             }
         }
 
-        /// <summary>
-        /// Add UI
-        /// </summary>
         public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers)
         {
             int mouseTextIndex = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Mouse Text"));

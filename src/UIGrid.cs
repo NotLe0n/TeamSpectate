@@ -41,13 +41,7 @@ namespace TeamSpectate.src
         private float innerListHeight;
         public float ListPadding = 5f;
 
-        public int Count
-        {
-            get
-            {
-                return items.Count;
-            }
-        }
+        public int Count => items.Count;
 
         private int cols = 1;
 

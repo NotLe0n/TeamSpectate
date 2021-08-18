@@ -26,6 +26,10 @@ You can also cycle different players using a hotkey (you have to set it fist)
 
 _________________________
 [c/FFE900:Recent Chnages:]
+v2.1
+- Fixed button positioning
+- code cleanup
+
 v2.0
 - Ported to 1.4
 
