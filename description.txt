@@ -28,6 +28,7 @@ _________________________
 [c/FFE900:Recent Chnages:]
 v2.1
 - Fixed button positioning
+- Update to .net6
 - code cleanup
 
 v2.0
