@@ -1,0 +1,58 @@
+[h1]Team Spectate[/h1]
+Team Spectate lets you view your team mates’ screen.
+This mod only works in Multiplayer. The Menu button is below the team selector.
+
+If you have any problems or bugs, contact me on my [url=https://discord.gg/NX4DVzz2v6]discord[/url]!
+
+[h2]Special thanks:[/h2]
+[b]Mirsario[/b] for fixing unloaded chunks
+[b]pollen__[/b] for giving me his player render code.
+[b]bafto[/b] for multiplayer testing
+
+[hr]
+[h2]How it works:[/h2]
+
+If you click on a player button other than your own you start spectating the other player.
+To exit the spectating mode press the player button again or press your own player.
+
+You can NOT spectate players that are dead, in a different team than you, or don't exist.
+Everyone can spectate players that are in no team.
+
+If you can't spectate a player their player head button turn grey.
+
+You can also cycle different players using a hotkey (you have to set it fist)
+
+[hr]
+[h2]Recent Chnages:[/h2]
+[h3]v2.1[/h3]
+[list]
+[*] Fixed button positioning
+[*] Update to .net6
+[*] code cleanup
+[/list]
+
+[h3]v2.0[/h3]
+[list]
+[*] Ported to 1.4
+[/list]
+
+[h3]v1.1.0.2[/h3]
+[list]
+[*] Fixed the buttons postion for real this time
+[*] Changed author name
+[/list]
+
+[h3]v1.1[/h3]
+[list]
+[*] Added Hotkeys
+[*] You can now spectate other players while you're dead
+[*] The Player id now shows next to the players name when you hover over the button
+[*] Fixed bug when trying to spectate yourself
+[*] Fixed bug with player ids
+[*] Fixed button not being rendered correctly at lower resolutions (be sure to tell me if it's still broken)
+[/list]
+
+[h3]v1.0[/h3]
+[list]
+[*] Release
+[/list]
