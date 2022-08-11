@@ -7,25 +7,51 @@ using Terraria.ModLoader;
 
 namespace TeamSpectate.src;
 
-class Camera : ModPlayer
+internal class Camera : ModPlayer
 {
+	public static bool SpectatingBoss { get; set; }
 	public static int? Target { get; set; }
 	public static bool Locked { get; set; }
 
 	public override void ModifyScreenPosition()
 	{
 		// don't move camera if the screen is locked, there is no Target, the Target value is invalid or the Target doesn't exist
-		if (!Locked || Target == null || Target >= Main.player.Length || !Main.player[(int)Target].active) {
+		if (Locked == false || Target == null) {
 			return;
 		}
 
-		if (Main.player[(int)Target].dead || Main.player[(int)Target] == Main.player[Main.myPlayer] || (Main.player[(int)Target].team != Main.LocalPlayer.team && Main.player[(int)Target].team != 0)) {
-			Target = null;
-			Locked = false;
+		if (SpectatingBoss) {
+			bool isBossInactive = !Main.npc[Target.Value].active;
+			if (isBossInactive) {
+				Untarget();
+				return;
+			}
+
+			// specate target boss
+			Main.screenPosition = Main.npc[Target.Value].position - (new Vector2(Main.screenWidth, Main.screenHeight) / 2);
 		}
 		else {
-			Main.screenPosition = Main.player[(int)Target].position - (new Vector2(Main.screenWidth, Main.screenHeight) / 2);
+			if (Target >= Main.player.Length || !Main.player[Target.Value].active) {
+				Untarget();
+				return;
+			}
+
+			// true if player is dead, myself, or in another team (except no team)
+			bool isPlayerInvalid = Main.player[Target.Value].dead || Main.player[Target.Value] == Main.LocalPlayer || (Main.player[Target.Value].team != Main.LocalPlayer.team && Main.player[Target.Value].team != 0);
+			if (isPlayerInvalid) {
+				Untarget();
+				return;
+			}
+
+			// spectate target player
+			Main.screenPosition = Main.player[Target.Value].position - (new Vector2(Main.screenWidth, Main.screenHeight) / 2);
 		}
+	}
+
+	private static void Untarget()
+	{
+		Target = null;
+		Locked = false;
 	}
 
 	public override void PostUpdate()

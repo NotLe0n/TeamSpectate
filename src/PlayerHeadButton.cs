@@ -9,7 +9,7 @@ using Terraria.UI;
 
 namespace TeamSpectate.src;
 
-class PlayerHeadButton : UIImageButton
+internal class PlayerHeadButton : UIImageButton
 {
 	public readonly Player player;
 	public int Index => Main.player.ToList().FindIndex(x => x == player);
@@ -23,12 +23,14 @@ class PlayerHeadButton : UIImageButton
 
 	public override void Click(UIMouseEvent evt)
 	{
-		if (player == Main.LocalPlayer) // if you click the button for your own player, the camera gets reset
-		{
+		if (player == Main.LocalPlayer) {
+			// if you click the button for your own player, the camera gets reset
+			Camera.SpectatingBoss = false;
 			Camera.Locked = false;
 			Camera.Target = null; // reset target
 		}
 		else {
+			Camera.SpectatingBoss = false;
 			Camera.Locked = !Camera.Locked;
 			Camera.Target = Camera.Target == null ? Index : null; // set target
 		}
@@ -46,19 +48,25 @@ class PlayerHeadButton : UIImageButton
 			Main.LocalPlayer.mouseInterface = true; // so you can't use items while clicking the button
 		}
 
+		// draw player head texture
 		Rectangle headBounds = new Rectangle(0, 0, 40, 56);
 		Vector2 drawpos = new Vector2(Parent.GetDimensions().X + Left.Pixels - 3, Parent.GetDimensions().Y + Top.Pixels - 3);
-		bool invalid = (player == null || !player.active || player.team != Main.LocalPlayer.team && player.team != 0);
 
-		// head
+		if (player is null)
+			return;
+
+		bool invalid = (!player.active || player.team != Main.LocalPlayer.team && player.team != 0);
+
+		// draw head
 		spriteBatch.Draw(TextureAssets.Players[0, 0].Value, drawpos, headBounds, invalid ? Color.Gray : player.skinColor, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1f);
-		// eyes
+		// draw eyes
 		spriteBatch.Draw(TextureAssets.Players[0, 2].Value, drawpos, headBounds, invalid ? Color.Gray : player.eyeColor, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1f);
-		// sclera
+		// draw sclera
 		spriteBatch.Draw(TextureAssets.Players[0, 1].Value, drawpos, headBounds, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1f);
-		// hair
+		// draw hair
 		spriteBatch.Draw(TextureAssets.PlayerHair[player.hair].Value, drawpos, headBounds, invalid ? Color.Gray : player.hairColor, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1f);
 
+		// update hover text
 		hovertext = invalid ? $"[{Index}] {player.name}" + "\nThis player is in a different team than you or doesn't exist" : $"[{Main.player.ToList().FindIndex(x => x == player)}] {player.name}";
 	}
 }

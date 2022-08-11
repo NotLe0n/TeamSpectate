@@ -5,11 +5,12 @@ using Terraria.GameContent.UI.Elements;
 
 namespace TeamSpectate.src;
 
-public class Menu : UIPanel
+internal class Menu : UIPanel
 {
 	private readonly UIGrid buttonGrid;
-	private UIScrollbar scrollbar;
-	private static int RealPlayerCount => Main.player.Where(p => p?.active == true).Count();
+	private UIScrollbar? scrollbar;
+	private static int RealPlayerCount => Main.player.Count(p => p?.active == true);
+	private static int BossCount => Main.npc.Count(n => n.whoAmI < Main.maxNPCs && n.active && n.boss);
 
 	public Menu(float width, float height)
 	{
@@ -28,7 +29,8 @@ public class Menu : UIPanel
 
 	public void AppendButtons()
 	{
-		if (RealPlayerCount > 42) {
+		// Add scrollbar if list is too long
+		if (RealPlayerCount + BossCount > 42) {
 			scrollbar = new UIScrollbar();
 			scrollbar.Left.Set(-20f, 1f);
 			scrollbar.Top.Set(10, 0f);
@@ -40,18 +42,25 @@ public class Menu : UIPanel
 			Append(scrollbar);
 		}
 
+		// Add player buttons
 		for (int i = 0; i < Main.maxPlayers; i++) {
 			if (Main.player[i].active) {
 				buttonGrid.Add(new PlayerHeadButton(Main.player[i]));
 			}
 		}
+
+		// add boss buttons
+		foreach (var boss in Main.npc.Where(n => n.whoAmI < Main.maxNPCs && n.active && n.boss)) {
+			buttonGrid.Add(new BossHeadButton(boss));
+		}
 	}
 
-	int oldActivePlayersCount;
+	private int oldBossCount;
+	private int oldActivePlayersCount;
 	public override void Update(GameTime gameTime)
 	{
 		// Check if player Count has changed and update buttons if it has
-		if (RealPlayerCount != oldActivePlayersCount) {
+		if (RealPlayerCount != oldActivePlayersCount || BossCount != oldBossCount) {
 			if (scrollbar != null) {
 				scrollbar.Remove();
 			}
@@ -63,6 +72,7 @@ public class Menu : UIPanel
 
 		// Update oldActivePlayersCount
 		oldActivePlayersCount = RealPlayerCount;
+		oldBossCount = BossCount;
 
 		// Dynamic width/height
 		Height.Set(20 + buttonGrid.GetTotalHeight(), 0);

@@ -8,6 +8,7 @@ public class TeamSpectate : Mod
 {
 	public override void Unload()
 	{
+		Camera.SpectatingBoss = false;
 		Camera.Target = null;
 		Camera.Locked = false;
 	}

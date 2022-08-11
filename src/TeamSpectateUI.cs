@@ -6,12 +6,12 @@ using Terraria.UI;
 
 namespace TeamSpectate.src;
 
-public class TeamSpectateUI : UIState
+internal class TeamSpectateUI : UIState
 {
-	private Menu menu;
-	private UIImageButton button;
+	private Menu? menu;
+	private readonly UIImageButton button;
 
-	public override void OnInitialize()
+	public TeamSpectateUI()
 	{
 		button = new UIImageButton(ModContent.Request<Texture2D>("TeamSpectate/Assets/cameraButton", ReLogic.Content.AssetRequestMode.ImmediateLoad));
 		button.Left.Set(-225, 1);
@@ -40,17 +40,14 @@ public class TeamSpectateUI : UIState
 		}
 
 		button.Top.Set(Main.mapStyle == 0 || Main.mapStyle == 2 ? Main.instance.invBottom + 50 : mH + SUPER_IMPORTANT_MAGIC_NUMBER, 0);
-
-		if (menu != null) {
-			menu.Top.Set(Main.mapStyle == 0 || Main.mapStyle == 2 ? Main.instance.invBottom + 50 : mH + SUPER_IMPORTANT_MAGIC_NUMBER, 0);
-		}
+		menu?.Top.Set(Main.mapStyle == 0 || Main.mapStyle == 2 ? Main.instance.invBottom + 50 : mH + SUPER_IMPORTANT_MAGIC_NUMBER, 0);
 	}
 }
 
-public class TeamSpectateDeadUI : UIState
+internal class TeamSpectateDeadUI : UIState
 {
-	private Menu deadMenu;
-	public override void OnInitialize()
+	private readonly Menu deadMenu;
+	public TeamSpectateDeadUI()
 	{
 		deadMenu = new Menu(300, 250);
 		Append(deadMenu);

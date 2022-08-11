@@ -7,7 +7,7 @@ using Terraria.UI;
 
 namespace TeamSpectate.src;
 
-class UISystem : ModSystem
+internal class UISystem : ModSystem
 {
 	internal UserInterface UserInterface, deadUserInterface;
 	private UIState UI, deadUI;
