@@ -4,7 +4,8 @@ This mod only works in Multiplayer. The Menu button is below the team selector.
 
 For a Changlog and more information visit my homepage!
 
-Contact [c/66EEFF:NotLe0n#7696] on discord if you have any problems.
+Contact me on my discord at https://discord.gg/NX4DVzz2v6 if you have any problems.
+This mod is open source on GitHub. If you have a GitHub account, please give it a star! (link is the homepage button)
 
 Special thanks:
 [c/66EEFF:Mirsario] for fixing unloaded chunks
@@ -14,18 +15,23 @@ Special thanks:
 _________________________
 [c/FFE900:How it works:]
 
-If you click on a player button other than your own you start spectating the other player.
+If you click on a player button other than your own, you start spectating the other player.
 To exit the spectating mode press the player button again or press your own player.
 
 You can NOT spectate players that are dead, in a different team than you, or don't exist.
 Everyone can spectate players that are in no team.
 
-If you can't spectate a player their player head button turn grey.
+If you can't spectate a player, their player head button turns grey.
 
 You can also cycle different players using a hotkey (you have to set it fist)
 
+You are also able to spectate a boss by clicking its button in the same menu.
+
 _________________________
 [c/FFE900:Recent Chnages:]
+v2.2
+- Added spectate boss button
+
 v2.1
 - Fixed button positioning
 - Update to .net6
