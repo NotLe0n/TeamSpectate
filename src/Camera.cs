@@ -70,11 +70,13 @@ internal class Camera : ModPlayer
 	public override void ProcessTriggers(TriggersSet triggersSet)
 	{
 		if (HotkeyLoader.prevPlayer.JustPressed && selectedTarget > 0) {
+			SpectatingBoss = false;
 			selectedTarget--;
 			Locked = true;
 			Target = selectedTarget;
 		}
 		if (HotkeyLoader.nextPlayer.JustPressed && selectedTarget < Main.player.Where(p => p?.active == true).Count()) {
+			SpectatingBoss = false;
 			selectedTarget++;
 			Locked = true;
 			Target = selectedTarget;
