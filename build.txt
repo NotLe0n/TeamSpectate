@@ -1,6 +1,6 @@
 displayName = Team Spectate
 author = NotLe0n
-version = 2.2
+version = 2.3
 hideCode = false
 hideResources = false
 includeSource = false

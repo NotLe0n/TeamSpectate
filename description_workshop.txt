@@ -27,6 +27,14 @@ You are also able to spectate a boss by clicking its button in the same menu.
 
 [hr]
 [h2]Recent Chnages:[/h2]
+
+[h3]v2.3[/h3]
+[list]
+[*] Added stop spectating hotkey
+[*] Added selected player/boss frame
+[*] fixed next-/prev player hotkey not resetting SpectatingBoss
+[/list]
+
 [h3]v2.2[/h3]
 [list]
 [*] Added specate boss button

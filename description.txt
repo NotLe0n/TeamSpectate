@@ -29,6 +29,11 @@ You are also able to spectate a boss by clicking its button in the same menu.
 
 _________________________
 [c/FFE900:Recent Chnages:]
+v2.3
+- Added stop spectating hotkey
+- Added selected player/boss frame
+- fixed next-/prev player hotkey not resetting SpectatingBoss
+
 v2.2
 - Added spectate boss button
 
