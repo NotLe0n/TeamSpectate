@@ -69,6 +69,10 @@ internal class Camera : ModPlayer
 	private int selectedTarget = 0;
 	public override void ProcessTriggers(TriggersSet triggersSet)
 	{
+		if (HotkeyLoader.nextPlayer is null || HotkeyLoader.prevPlayer is null || HotkeyLoader.stopSpectating is null) {
+			return;
+		}
+
 		if (HotkeyLoader.prevPlayer.JustPressed && selectedTarget > 0) {
 			SpectatingBoss = false;
 			selectedTarget--;
@@ -80,6 +84,10 @@ internal class Camera : ModPlayer
 			selectedTarget++;
 			Locked = true;
 			Target = selectedTarget;
+		}
+		if (HotkeyLoader.stopSpectating.JustPressed) {
+			Untarget();
+			SpectatingBoss = false;
 		}
 	}
 }
