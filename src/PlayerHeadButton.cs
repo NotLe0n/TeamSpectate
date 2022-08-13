@@ -6,6 +6,7 @@ using Terraria.GameContent;
 using Terraria.GameContent.UI.Elements;
 using Terraria.ModLoader;
 using Terraria.UI;
+using ReLogic.Content;
 
 namespace TeamSpectate.src;
 
@@ -15,7 +16,7 @@ internal class PlayerHeadButton : UIImageButton
 	public int Index => Main.player.ToList().FindIndex(x => x == player);
 	private string hovertext;
 
-	public PlayerHeadButton(Player player) : base(ModContent.Request<Texture2D>("TeamSpectate/Assets/empty", ReLogic.Content.AssetRequestMode.ImmediateLoad))
+	public PlayerHeadButton(Player player) : base(ModContent.Request<Texture2D>("TeamSpectate/Assets/empty", AssetRequestMode.ImmediateLoad))
 	{
 		this.player = player;
 		hovertext = $"[{Index}] {player.name}";
@@ -68,5 +69,13 @@ internal class PlayerHeadButton : UIImageButton
 
 		// update hover text
 		hovertext = invalid ? $"[{Index}] {player.name}" + "\nThis player is in a different team than you or doesn't exist" : $"[{Main.player.ToList().FindIndex(x => x == player)}] {player.name}";
+
+		if (Camera.Target == Index && Camera.SpectatingBoss == false) {
+			// draw frame
+			spriteBatch.Draw(ModContent.Request<Texture2D>("TeamSpectate/Assets/selectedFrame", AssetRequestMode.ImmediateLoad).Value,
+				GetDimensions().Position(),
+				Color.White
+			);
+		}
 	}
 }

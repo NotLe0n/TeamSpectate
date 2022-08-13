@@ -55,6 +55,14 @@ internal class BossHeadButton : UIImageButton
 
 		var headTexture = TextureAssets.NpcHeadBoss[index];
 		var drawpos = new Vector2(Parent.GetDimensions().X + Left.Pixels, Parent.GetDimensions().Y + Top.Pixels);
-		spriteBatch.Draw(headTexture.Value, drawpos, new Rectangle(0, 0, headTexture.Width(), headTexture.Height()), Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1f);	
+		spriteBatch.Draw(headTexture.Value, drawpos, new Rectangle(0, 0, headTexture.Width(), headTexture.Height()), Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1f);
+
+		if (Camera.Target == Index && Camera.SpectatingBoss) {
+			// draw frame
+			spriteBatch.Draw(ModContent.Request<Texture2D>("TeamSpectate/Assets/selectedFrame", AssetRequestMode.ImmediateLoad).Value,
+				GetDimensions().Position(),
+				Color.White
+			);
+		}
 	}
 }
