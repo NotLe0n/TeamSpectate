@@ -6,7 +6,7 @@ using Terraria;
 using Terraria.GameContent.UI.Elements;
 using Terraria.UI;
 
-namespace TeamSpectate.src;
+namespace TeamSpectate;
 
 public class UIGrid : UIElement
 {

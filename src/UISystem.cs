@@ -5,7 +5,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.UI;
 
-namespace TeamSpectate.src;
+namespace TeamSpectate;
 
 internal class UISystem : ModSystem
 {

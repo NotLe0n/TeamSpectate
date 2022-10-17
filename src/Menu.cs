@@ -3,7 +3,7 @@ using System.Linq;
 using Terraria;
 using Terraria.GameContent.UI.Elements;
 
-namespace TeamSpectate.src;
+namespace TeamSpectate;
 
 internal class Menu : UIPanel
 {

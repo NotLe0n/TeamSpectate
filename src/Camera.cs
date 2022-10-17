@@ -5,7 +5,7 @@ using Terraria.GameInput;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace TeamSpectate.src;
+namespace TeamSpectate;
 
 internal class Camera : ModPlayer
 {
@@ -16,7 +16,7 @@ internal class Camera : ModPlayer
 	public override void ModifyScreenPosition()
 	{
 		// don't move camera if the screen is locked, there is no Target, the Target value is invalid or the Target doesn't exist
-		if (Locked == false || Target == null) {
+		if (Locked == false || Target is null or -1) {
 			return;
 		}
 

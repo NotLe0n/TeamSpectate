@@ -1,14 +1,14 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using ReLogic.Content;
 using System.Linq;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.GameContent.UI.Elements;
 using Terraria.ModLoader;
 using Terraria.UI;
-using ReLogic.Content;
 
-namespace TeamSpectate.src;
+namespace TeamSpectate;
 
 internal class PlayerHeadButton : UIImageButton
 {

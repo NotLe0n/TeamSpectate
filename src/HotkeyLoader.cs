@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework.Input;
 using Terraria.ModLoader;
 
-namespace TeamSpectate.src;
+namespace TeamSpectate;
 
 class HotkeyLoader : ModSystem
 {

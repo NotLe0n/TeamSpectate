@@ -4,7 +4,7 @@ using Terraria.GameContent.UI.Elements;
 using Terraria.ModLoader;
 using Terraria.UI;
 
-namespace TeamSpectate.src;
+namespace TeamSpectate;
 
 internal class TeamSpectateUI : UIState
 {

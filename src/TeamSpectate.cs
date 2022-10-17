@@ -2,7 +2,7 @@ using System.IO;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace TeamSpectate.src;
+namespace TeamSpectate;
 
 public class TeamSpectate : Mod
 {
