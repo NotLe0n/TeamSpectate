@@ -3,15 +3,15 @@ using Terraria.ModLoader;
 
 namespace TeamSpectate;
 
-class HotkeyLoader : ModSystem
+internal class HotkeyLoader : ModSystem
 {
 	public static ModKeybind? prevPlayer, nextPlayer, stopSpectating;
 
 	public override void Load()
 	{
-		prevPlayer = KeybindLoader.RegisterKeybind(Mod, "Spectate Previous Player", Keys.None);
-		nextPlayer = KeybindLoader.RegisterKeybind(Mod, "Spectate Next Player", Keys.None);
-		stopSpectating = KeybindLoader.RegisterKeybind(Mod, "Stop specating", Keys.None);
+		prevPlayer = KeybindLoader.RegisterKeybind(Mod, "PreviousPlayer", Keys.None);
+		nextPlayer = KeybindLoader.RegisterKeybind(Mod, "NextPlayer", Keys.None);
+		stopSpectating = KeybindLoader.RegisterKeybind(Mod, "Stop", Keys.None);
 	}
 
 	public override void Unload()

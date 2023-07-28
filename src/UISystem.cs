@@ -9,16 +9,16 @@ namespace TeamSpectate;
 
 internal class UISystem : ModSystem
 {
-	internal UserInterface UserInterface, deadUserInterface;
-	private UIState UI, deadUI;
+	private UserInterface? userInterface, deadUserInterface;
+	private UIState? ui, deadUI;
 
 	public override void Load()
 	{
 		if (!Main.dedServ) {
-			UI = new TeamSpectateUI();
-			UI.Activate();
-			UserInterface = new UserInterface();
-			UserInterface.SetState(UI);
+			ui = new TeamSpectateUI();
+			ui.Activate();
+			userInterface = new UserInterface();
+			userInterface.SetState(ui);
 
 			deadUI = new TeamSpectateDeadUI();
 			deadUI.Activate();
@@ -29,23 +29,23 @@ internal class UISystem : ModSystem
 
 	public override void Unload()
 	{
-		UI = deadUI = null;
-		UserInterface = deadUserInterface = null;
+		ui = deadUI = null;
+		userInterface = deadUserInterface = null;
 		Camera.Target = null;
 		Camera.Locked = false;
 	}
 
-	private GameTime _lastUpdateUiGameTime;
+	private GameTime? _lastUpdateUiGameTime;
 	public override void UpdateUI(GameTime gameTime)
 	{
 		_lastUpdateUiGameTime = gameTime;
 		if (Main.netMode == NetmodeID.MultiplayerClient) {
 			if (Main.playerInventory) {
-				UserInterface.Update(gameTime);
+				userInterface?.Update(gameTime);
 			}
 
 			if (Main.LocalPlayer.dead) {
-				deadUserInterface.Update(gameTime);
+				deadUserInterface?.Update(gameTime);
 			}
 		}
 	}
@@ -60,11 +60,11 @@ internal class UISystem : ModSystem
 				{
 					if (Main.netMode == NetmodeID.MultiplayerClient) {
 						if (Main.playerInventory) {
-							UserInterface.Draw(Main.spriteBatch, _lastUpdateUiGameTime);
+							userInterface?.Draw(Main.spriteBatch, _lastUpdateUiGameTime);
 						}
 
 						if (Main.LocalPlayer.dead) {
-							deadUserInterface.Draw(Main.spriteBatch, _lastUpdateUiGameTime);
+							deadUserInterface?.Draw(Main.spriteBatch, _lastUpdateUiGameTime);
 						}
 					}
 					return true;

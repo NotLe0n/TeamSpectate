@@ -1,0 +1,8 @@
+Keybinds: {
+	PreviousPlayer.DisplayName: Spectate previous player
+	NextPlayer.DisplayName: Spectate next player
+	Stop.DisplayName: Stop spectating
+}
+
+PlayerNotFound: This player is in a different team than you or doesn't exist
+SpectateBoss: Spectate Boss

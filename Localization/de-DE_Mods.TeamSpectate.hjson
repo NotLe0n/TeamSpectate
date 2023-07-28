@@ -1,0 +1,8 @@
+Keybinds: {
+	PreviousPlayer.DisplayName: Vorherigen Spieler zuschauen
+	NextPlayer.DisplayName: Nächsten Spieler zuschauen
+	Stop.DisplayName: Zuschauen beenden
+}
+
+PlayerNotFound: Dieser Spieler ist in einem anderen Team als du oder existiert nicht
+SpectateBoss: Boss zuschauen

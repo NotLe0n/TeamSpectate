@@ -15,7 +15,7 @@ internal class TeamSpectateUI : UIState
 	{
 		button = new UIImageButton(ModContent.Request<Texture2D>("TeamSpectate/Assets/cameraButton", ReLogic.Content.AssetRequestMode.ImmediateLoad));
 		button.Left.Set(-225, 1);
-		button.OnClick += (elm, evt) =>
+		button.OnLeftClick += (_, _) =>
 		{
 			if (menu == null) {
 				menu = new Menu(300, 250);

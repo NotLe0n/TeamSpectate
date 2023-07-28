@@ -79,7 +79,7 @@ internal class Camera : ModPlayer
 			Locked = true;
 			Target = selectedTarget;
 		}
-		if (HotkeyLoader.nextPlayer.JustPressed && selectedTarget < Main.player.Where(p => p?.active == true).Count()) {
+		if (HotkeyLoader.nextPlayer.JustPressed && selectedTarget < Main.player.Count(p => p?.active == true)) {
 			SpectatingBoss = false;
 			selectedTarget++;
 			Locked = true;

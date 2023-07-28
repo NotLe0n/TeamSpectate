@@ -5,6 +5,7 @@ using System.Linq;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.GameContent.UI.Elements;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.UI;
 
@@ -12,7 +13,7 @@ namespace TeamSpectate;
 
 internal class BossHeadButton : UIImageButton
 {
-	public readonly NPC boss;
+	private readonly NPC boss;
 	private int Index => Main.npc.ToList().FindIndex(x => x == boss);
 
 	public BossHeadButton(NPC boss) : base(ModContent.Request<Texture2D>("TeamSpectate/Assets/empty", AssetRequestMode.ImmediateLoad))
@@ -20,9 +21,9 @@ internal class BossHeadButton : UIImageButton
 		this.boss = boss;
 	}
 
-	public override void Click(UIMouseEvent evt)
+	public override void LeftClick(UIMouseEvent evt)
 	{
-		base.Click(evt);
+		base.LeftClick(evt);
 
 		if (Camera.SpectatingBoss && Camera.Target == Index) {
 			Camera.Target = null;
@@ -41,7 +42,7 @@ internal class BossHeadButton : UIImageButton
 		base.Draw(spriteBatch);
 
 		if (IsMouseHovering) {
-			Main.hoverItemName = $"Spectate Boss: {boss.FullName}";
+			Main.hoverItemName = $"{Language.GetTextValue("Mods.TeamSpectate.SpectateBoss")}: {boss.FullName}";
 		}
 
 		if (ContainsPoint(Main.MouseScreen)) {
@@ -49,7 +50,7 @@ internal class BossHeadButton : UIImageButton
 		}
 
 		// draw boss head texture
-		var index = boss.GetBossHeadTextureIndex();
+		int index = boss.GetBossHeadTextureIndex();
 		if (index == -1) {
 			return;
 		}

@@ -27,7 +27,7 @@ internal class Menu : UIPanel
 		AppendButtons();
 	}
 
-	public void AppendButtons()
+	private void AppendButtons()
 	{
 		// Add scrollbar if list is too long
 		if (RealPlayerCount + BossCount > 42) {
@@ -61,9 +61,7 @@ internal class Menu : UIPanel
 	{
 		// Check if player Count has changed and update buttons if it has
 		if (RealPlayerCount != oldActivePlayersCount || BossCount != oldBossCount) {
-			if (scrollbar != null) {
-				scrollbar.Remove();
-			}
+			scrollbar?.Remove();
 
 			buttonGrid.Clear();
 			AppendButtons();

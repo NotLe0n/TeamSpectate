@@ -29,6 +29,10 @@ You are also able to spectate a boss by clicking its button in the same menu.
 
 _________________________
 [c/FFE900:Recent Chnages:]
+v2.4
+- Updated to 1.4.4 (untested)
+- Adedd Russian and German localization
+
 v2.3
 - Added stop spectating hotkey
 - Added selected player/boss frame

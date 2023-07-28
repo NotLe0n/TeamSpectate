@@ -1,0 +1,8 @@
+Keybinds: {
+	PreviousPlayer.DisplayName: смотреть предыдущий игрок
+	NextPlayer.DisplayName: смотреть следующий игрок
+	Stop.DisplayName: перестань смотреть
+}
+
+PlayerNotFound: Этот игрок находится в другой команде, чем вы, или не существует
+SpectateBoss: Смотреть Босс
