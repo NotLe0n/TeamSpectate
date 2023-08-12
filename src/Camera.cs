@@ -54,6 +54,12 @@ internal class Camera : ModPlayer
 		Locked = false;
 	}
 
+	public override void OnRespawn()
+	{
+		base.OnRespawn();
+		Untarget();
+	}
+
 	public override void PostUpdate()
 	{
 		if (Player.whoAmI == Main.myPlayer && Main.netMode == NetmodeID.MultiplayerClient && Main.GameUpdateCount % 10 == 0) {
