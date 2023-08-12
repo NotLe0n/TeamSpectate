@@ -6,3 +6,15 @@ Keybinds: {
 
 PlayerNotFound: Этот игрок находится в другой команде, чем вы, или не существует
 SpectateBoss: Смотреть Босс
+
+Configs: {
+	Config: {
+		// DisplayName: Config
+		// Headers.Tweaks: Tweaks Header
+
+		RespawnSpectateOffToggle: {
+			// Label: Exit spectate mode upon respawn
+			// Tooltip: ""
+		}
+	}
+}

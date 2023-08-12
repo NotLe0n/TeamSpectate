@@ -4,6 +4,7 @@ using Terraria;
 using Terraria.GameInput;
 using Terraria.ID;
 using Terraria.ModLoader;
+using TeamSpectate.src;
 
 namespace TeamSpectate;
 
@@ -57,6 +58,7 @@ internal class Camera : ModPlayer
 	public override void OnRespawn()
 	{
 		base.OnRespawn();
+		if (ModContent.GetInstance<Config>().RespawnSpectateOffToggle == false) { return; }
 		Untarget();
 	}
 
