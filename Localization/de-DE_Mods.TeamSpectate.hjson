@@ -6,3 +6,15 @@ Keybinds: {
 
 PlayerNotFound: Dieser Spieler ist in einem anderen Team als du oder existiert nicht
 SpectateBoss: Boss zuschauen
+
+Configs: {
+	Config: {
+		// DisplayName: Config
+		// Headers.Tweaks: Tweaks Header
+
+		RespawnSpectateOffToggle: {
+			// Label: Exit spectate mode upon respawn
+			// Tooltip: ""
+		}
+	}
+}
