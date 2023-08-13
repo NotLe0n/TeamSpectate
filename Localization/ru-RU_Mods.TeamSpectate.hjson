@@ -9,12 +9,12 @@ SpectateBoss: Смотреть Босс
 
 Configs: {
 	Config: {
-		// DisplayName: Config
+		DisplayName: Настройки
 		// Headers.Tweaks: Tweaks Header
 
 		RespawnSpectateOffToggle: {
-			// Label: Exit spectate mode upon respawn
-			// Tooltip: ""
+			Label: Выход из режима наблюдателя после возрождения
+			Tooltip: ""
 		}
 	}
 }

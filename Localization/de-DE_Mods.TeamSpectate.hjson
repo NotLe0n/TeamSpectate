@@ -9,12 +9,12 @@ SpectateBoss: Boss zuschauen
 
 Configs: {
 	Config: {
-		// DisplayName: Config
+		DisplayName: Einstellungen
 		// Headers.Tweaks: Tweaks Header
 
 		RespawnSpectateOffToggle: {
-			// Label: Exit spectate mode upon respawn
-			// Tooltip: ""
+			Label: Zuschauen beenden, sobald man wiederbelebt wird
+			Tooltip: ""
 		}
 	}
 }

@@ -27,6 +27,11 @@ You are also able to spectate a boss by clicking its button in the same menu.
 
 [hr]
 [h2]Recent Chnages:[/h2]
+[h3]v2.5[/h3]
+[list]
+[*] Added option to stop spectating after you respawn (default: off). Thanks helscarthe.
+[/list]
+
 [h3]v2.4[/h3]
 [list]
 [*] Updated to 1.4.4 (untested)

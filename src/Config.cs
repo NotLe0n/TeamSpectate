@@ -1,14 +1,12 @@
 ﻿using System.ComponentModel;
 using Terraria.ModLoader.Config;
 
-namespace TeamSpectate.src
-{
-	public class Config : ModConfig
-	{
-		public override ConfigScope Mode => ConfigScope.ClientSide;
+namespace TeamSpectate;
 
-		[Label("Exit spectate mode upon respawn")]
-		[DefaultValue(false)]
-		public bool RespawnSpectateOffToggle;
-	}
+public class Config : ModConfig
+{
+	public override ConfigScope Mode => ConfigScope.ClientSide;
+
+	[DefaultValue(false)]
+	public bool RespawnSpectateOffToggle;
 }
