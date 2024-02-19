@@ -28,7 +28,7 @@ You can also cycle different players using a hotkey (you have to set it fist)
 You are also able to spectate a boss by clicking its button in the same menu.
 
 _________________________
-[c/FFE900:Recent Chnages:]
+[c/FFE900:Recent Changes:]
 v2.6
 - Added option to automatically spectate the nearest player when you die (default: on)
 - Made the "stop spectating on respawn" option ON by default
