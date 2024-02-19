@@ -28,14 +28,16 @@ internal class PlayerHeadButton : UIImageButton
 	{
 		if (player == Main.LocalPlayer) {
 			// if you click the button for your own player, the camera gets reset
-			Camera.SpectatingBoss = false;
-			Camera.Locked = false;
-			Camera.Target = null; // reset target
+			Camera.Untarget();
 		}
 		else {
-			Camera.SpectatingBoss = false;
-			Camera.Locked = !Camera.Locked;
-			Camera.Target = Camera.Target == null ? Index : null; // set target
+			// toggle target
+			if (Camera.Target == null) {
+				Camera.SetTarget(Index, false);
+			}
+			else {
+				Camera.Untarget();
+			}
 		}
 	}
 

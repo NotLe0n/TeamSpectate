@@ -26,14 +26,10 @@ internal class BossHeadButton : UIImageButton
 		base.LeftClick(evt);
 
 		if (Camera.SpectatingBoss && Camera.Target == Index) {
-			Camera.Target = null;
-			Camera.SpectatingBoss = false;
-			Camera.Locked = false;
+			Camera.Untarget();
 		}
 		else {
-			Camera.Target = Index;
-			Camera.SpectatingBoss = true;
-			Camera.Locked = true;
+			Camera.SetTarget(Index, true);
 		}
 	}
 

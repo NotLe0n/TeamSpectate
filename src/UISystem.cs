@@ -31,8 +31,7 @@ internal class UISystem : ModSystem
 	{
 		ui = deadUI = null;
 		userInterface = deadUserInterface = null;
-		Camera.Target = null;
-		Camera.Locked = false;
+		Camera.Untarget();
 	}
 
 	private GameTime? _lastUpdateUiGameTime;

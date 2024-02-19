@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
+using System;
 using System.Linq;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.GameInput;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -9,14 +11,14 @@ namespace TeamSpectate;
 
 internal class Camera : ModPlayer
 {
-	public static bool SpectatingBoss { get; set; }
-	public static int? Target { get; set; }
-	public static bool Locked { get; set; }
+	public static bool SpectatingBoss { get; private set; }
+	public static int? Target { get; private set; }
+	private static bool locked;
 
 	public override void ModifyScreenPosition()
 	{
 		// don't move camera if the screen is locked, there is no Target, the Target value is invalid or the Target doesn't exist
-		if (Locked == false || Target is null or -1) {
+		if (locked == false || Target is null or -1) {
 			return;
 		}
 
@@ -48,10 +50,18 @@ internal class Camera : ModPlayer
 		}
 	}
 
-	private static void Untarget()
+	public static void SetTarget(int targetID, bool isBoss)
+	{
+		Target = targetID;
+		locked = true;
+		SpectatingBoss = isBoss;
+	}
+	
+	public static void Untarget()
 	{
 		Target = null;
-		Locked = false;
+		locked = false;
+		SpectatingBoss = false;
 	}
 
 	public override void OnRespawn()
@@ -83,20 +93,15 @@ internal class Camera : ModPlayer
 		}
 
 		if (HotkeyLoader.prevPlayer.JustPressed && selectedTarget > 0) {
-			SpectatingBoss = false;
 			selectedTarget--;
-			Locked = true;
-			Target = selectedTarget;
+			SetTarget(selectedTarget, false);
 		}
 		if (HotkeyLoader.nextPlayer.JustPressed && selectedTarget < Main.player.Count(p => p?.active == true)) {
-			SpectatingBoss = false;
 			selectedTarget++;
-			Locked = true;
-			Target = selectedTarget;
+			SetTarget(selectedTarget, false);
 		}
 		if (HotkeyLoader.stopSpectating.JustPressed) {
 			Untarget();
-			SpectatingBoss = false;
 		}
 	}
 }
