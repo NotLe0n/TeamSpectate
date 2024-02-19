@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
 using System.Linq;
 using Terraria;
 using Terraria.DataStructures;
@@ -71,6 +70,19 @@ internal class Camera : ModPlayer
 			return;
 		}
 		Untarget();
+	}
+
+	public override void Kill(double damage, int hitDirection, bool pvp, PlayerDeathReason damageSource)
+	{
+		base.Kill(damage, hitDirection, pvp, damageSource);
+		if (ModContent.GetInstance<Config>().SpectateOnDeath == false) {
+			return;
+		}
+		
+		Player? closest = Main.player.Where(x => x != Main.LocalPlayer).MinBy(x => x.position.Distance(Main.LocalPlayer.position));
+		if (closest is null) return;
+		
+		SetTarget(closest.whoAmI, false);
 	}
 
 	public override void PostUpdate()

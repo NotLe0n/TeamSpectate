@@ -16,5 +16,10 @@ Configs: {
 			Label: Exit spectate mode upon respawn
 			Tooltip: ""
 		}
+
+		SpectateOnDeath: {
+			Label: Spectate the nearest player upon death
+			Tooltip: ""
+		}
 	}
 }

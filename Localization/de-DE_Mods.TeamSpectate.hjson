@@ -16,5 +16,10 @@ Configs: {
 			Label: Zuschauen beenden, sobald man wiederbelebt wird
 			Tooltip: ""
 		}
+
+		SpectateOnDeath: {
+			Label: Nächsten Spieler automatisch zuschauen, sobald man stirbt
+			Tooltip: ""
+		}
 	}
 }
