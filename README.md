@@ -23,3 +23,6 @@ If you can't spectate a player, their player head button turns grey.
 You can also cycle different players using a hotkey (you have to set it fist)
 
 You are also able to spectate a boss by clicking its button in the same menu.
+
+If you die you automatically spectate the closest player (can be turned off).
+When you respawn you automatically stop spectating (can also be turned off).
