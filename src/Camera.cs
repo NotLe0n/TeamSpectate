@@ -12,12 +12,11 @@ internal class Camera : ModPlayer
 {
 	public static bool SpectatingBoss { get; private set; }
 	public static int? Target { get; private set; }
-	private static bool locked;
 
 	public override void ModifyScreenPosition()
 	{
-		// don't move camera if the screen is locked, there is no Target, the Target value is invalid or the Target doesn't exist
-		if (locked == false || Target is null or -1) {
+		// don't move camera if there is no Target, the Target value is invalid or the Target doesn't exist
+		if (Target is null or -1) {
 			return;
 		}
 
@@ -52,14 +51,12 @@ internal class Camera : ModPlayer
 	public static void SetTarget(int targetID, bool isBoss)
 	{
 		Target = targetID;
-		locked = true;
 		SpectatingBoss = isBoss;
 	}
 	
 	public static void Untarget()
 	{
 		Target = null;
-		locked = false;
 		SpectatingBoss = false;
 	}
 

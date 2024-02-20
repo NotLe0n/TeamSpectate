@@ -4,7 +4,9 @@ Keybinds: {
 	Stop.DisplayName: Stop spectating
 }
 
-PlayerNotFound: This player is in a different team than you or doesn't exist
+PlayerDead: You cannot spectate dead players
+PlayerDifferentTeam: This player is in a different party than you
+PlayerNotFound: This player doesn't exist
 SpectateBoss: Spectate Boss
 
 Configs: {

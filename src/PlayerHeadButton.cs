@@ -15,13 +15,12 @@ namespace TeamSpectate;
 internal class PlayerHeadButton : UIImageButton
 {
 	private readonly Player player;
-	private int Index => Array.FindIndex(Main.player, x => x == player);
 	private string hovertext;
 
 	public PlayerHeadButton(Player player) : base(ModContent.Request<Texture2D>("TeamSpectate/Assets/empty", AssetRequestMode.ImmediateLoad))
 	{
 		this.player = player;
-		hovertext = $"[{Index}] {player.name}";
+		hovertext = $"[{player.whoAmI}] {player.name}";
 	}
 
 	public override void LeftClick(UIMouseEvent evt)
@@ -33,7 +32,7 @@ internal class PlayerHeadButton : UIImageButton
 		else {
 			// toggle target
 			if (Camera.Target == null) {
-				Camera.SetTarget(Index, false);
+				Camera.SetTarget(player.whoAmI, false);
 			}
 			else {
 				Camera.Untarget();
@@ -57,10 +56,7 @@ internal class PlayerHeadButton : UIImageButton
 		Rectangle headBounds = new(0, 0, 40, 56);
 		Vector2 drawpos = new(Parent.GetDimensions().X + Left.Pixels - 3, Parent.GetDimensions().Y + Top.Pixels - 3);
 
-		if (player is null)
-			return;
-
-		bool invalid = (!player.active || player.team != Main.LocalPlayer.team && player.team != 0);
+		bool invalid = player.whoAmI != Main.myPlayer && (player.dead || !player.active || player.team != Main.LocalPlayer.team && player.team != 0);
 
 		// draw head
 		spriteBatch.Draw(TextureAssets.Players[0, 0].Value, drawpos, headBounds, invalid ? Color.Gray : player.skinColor, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1f);
@@ -72,9 +68,21 @@ internal class PlayerHeadButton : UIImageButton
 		spriteBatch.Draw(TextureAssets.PlayerHair[player.hair].Value, drawpos, headBounds, invalid ? Color.Gray : player.hairColor, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1f);
 
 		// update hover text
-		hovertext = invalid ? $"[{Index}] {player.name}\n{Language.GetTextValue("Mods.TeamSpectate.PlayerNotFound")}" : $"[{Main.player.ToList().FindIndex(x => x == player)}] {player.name}";
+		if (invalid) {
+			if (player.dead) {
+				hovertext = Language.GetTextValue("Mods.TeamSpectate.PlayerDead");
+			} else if (player.team != Main.LocalPlayer.team) {
+				hovertext = Language.GetTextValue("Mods.TeamSpectate.PlayerDifferentTeam");
+			}
+			else {
+				hovertext = $"[{player.whoAmI}] {player.name}\n{Language.GetTextValue("Mods.TeamSpectate.PlayerNotFound")}";
+			}
+		}
+		else {
+			hovertext = $"[{player.whoAmI}] {player.name}";
+		}
 
-		if (Camera.Target == Index && Camera.SpectatingBoss == false) {
+		if (Camera.Target == player.whoAmI && Camera.SpectatingBoss == false) {
 			// draw frame
 			spriteBatch.Draw(ModContent.Request<Texture2D>("TeamSpectate/Assets/selectedFrame", AssetRequestMode.ImmediateLoad).Value,
 				GetDimensions().Position(),

@@ -4,7 +4,9 @@ Keybinds: {
 	Stop.DisplayName: Zuschauen beenden
 }
 
-PlayerNotFound: Dieser Spieler ist in einem anderen Team als du oder existiert nicht
+PlayerDead: Tote Spieler kannst du nicht zuschauen
+PlayerDifferentTeam: Dieser Spieler ist in einer anderen Gruppe als du
+PlayerNotFound: Dieser Spieler existiert nicht
 SpectateBoss: Boss zuschauen
 
 Configs: {

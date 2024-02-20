@@ -2,8 +2,6 @@ Team Spectate lets you view your team mates' screen.
 
 This mod only works in Multiplayer. The Menu button is below the team selector.
 
-For a Changlog and more information visit my homepage!
-
 Contact me on my discord at https://discord.gg/NX4DVzz2v6 if you have any problems.
 This mod is open source on GitHub. If you have a GitHub account, please give it a star! (link is the homepage button)
 
@@ -27,8 +25,16 @@ You can also cycle different players using a hotkey (you have to set it fist)
 
 You are also able to spectate a boss by clicking its button in the same menu.
 
+If you die you automatically spectate the closest player (can be turned off).
+When you respawn you automatically stop spectating (can also be turned off).
+
 _________________________
 [c/FFE900:Recent Changes:]
+v2.6.1
+- More accurate hover text for the player buttons
+- Dead players now get grayed out
+- Changed menu button icon
+
 v2.6
 - Added option to automatically spectate the nearest player when you die (default: on)
 - Made the "stop spectating on respawn" option ON by default
@@ -38,35 +44,4 @@ v2.5
 
 v2.4
 - Updated to 1.4.4 (untested)
-- Adedd Russian and German localization
-
-v2.3
-- Added stop spectating hotkey
-- Added selected player/boss frame
-- fixed next-/prev player hotkey not resetting SpectatingBoss
-
-v2.2
-- Added spectate boss button
-
-v2.1
-- Fixed button positioning
-- Update to .net6
-- code cleanup
-
-v2.0
-- Ported to 1.4
-
-v1.1.0.2
-- Fixed the buttons postion for real this time
-- Changed author name
-
-v1.1
-- Added Hotkeys
-- You can now spectate other players while you're dead
-- The Player id now shows next to the players name when you hover over the button
-- Fixed bug when trying to spectate yourself
-- Fixed bug with player ids
-- Fixed button not being rendered correctly at lower resolutions (be sure to tell me if it's still broken)
-
-v1.0
-- Release
+- Added Russian and German localization
