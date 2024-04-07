@@ -27,8 +27,8 @@ internal class Camera : ModPlayer
 				return;
 			}
 
-			// specate target boss
-			Main.screenPosition = Main.npc[Target.Value].position - (new Vector2(Main.screenWidth, Main.screenHeight) / 2);
+			// spectate target boss
+			Main.screenPosition = Main.npc[Target.Value].position - new Vector2(Main.screenWidth, Main.screenHeight) / 2;
 		}
 		else {
 			if (Target >= Main.player.Length || !Main.player[Target.Value].active) {
@@ -44,7 +44,7 @@ internal class Camera : ModPlayer
 			}
 
 			// spectate target player
-			Main.screenPosition = Main.player[Target.Value].position - (new Vector2(Main.screenWidth, Main.screenHeight) / 2);
+			Main.screenPosition = Main.player[Target.Value].position - new Vector2(Main.screenWidth, Main.screenHeight) / 2;
 		}
 	}
 
@@ -94,22 +94,23 @@ internal class Camera : ModPlayer
 		}
 	}
 
-	private int selectedTarget = 0;
+	private int selectedTarget;
 	public override void ProcessTriggers(TriggersSet triggersSet)
-	{
-		if (HotkeyLoader.nextPlayer is null || HotkeyLoader.prevPlayer is null || HotkeyLoader.stopSpectating is null) {
+    {
+        var keybinds = ModContent.GetInstance<KeybindSystem>();
+		if (keybinds.nextPlayer is null || keybinds.prevPlayer is null || keybinds.stopSpectating is null) {
 			return;
 		}
 
-		if (HotkeyLoader.prevPlayer.JustPressed && selectedTarget > 0) {
+		if (keybinds.prevPlayer.JustPressed && selectedTarget > 0) {
 			selectedTarget--;
 			SetTarget(selectedTarget, false);
 		}
-		if (HotkeyLoader.nextPlayer.JustPressed && selectedTarget < Main.player.Count(p => p?.active == true)) {
+		if (keybinds.nextPlayer.JustPressed && selectedTarget < Main.player.Count(p => p?.active == true)) {
 			selectedTarget++;
 			SetTarget(selectedTarget, false);
 		}
-		if (HotkeyLoader.stopSpectating.JustPressed) {
+		if (keybinds.stopSpectating.JustPressed) {
 			Untarget();
 		}
 	}

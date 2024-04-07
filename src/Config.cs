@@ -1,5 +1,8 @@
 ﻿using System.ComponentModel;
+using Terraria.ModLoader;
 using Terraria.ModLoader.Config;
+// ReSharper disable UnassignedField.Global
+// ReSharper disable InconsistentNaming // renaming would reset the values on update
 
 namespace TeamSpectate;
 

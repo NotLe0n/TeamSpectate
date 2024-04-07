@@ -26,3 +26,7 @@ You are also able to spectate a boss by clicking its button in the same menu.
 
 If you die you automatically spectate the closest player (can be turned off).
 When you respawn you automatically stop spectating (can also be turned off).
+
+## License
+This mod is licensed under the GNU GPLv3 license.
+If you use any code from this mod you have to open source it under the same license and give credit in your mod's description.

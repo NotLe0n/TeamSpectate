@@ -45,3 +45,8 @@ v2.5
 v2.4
 - Updated to 1.4.4 (untested)
 - Added Russian and German localization
+
+_________________________
+[c/FFE900:License:]
+This mod is licensed under the GNU GPLv3 license.
+If you use any code from this mod you have to open source it under the same license and give credit in your mod's description.

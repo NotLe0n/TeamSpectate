@@ -1,12 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using ReLogic.Content;
 using System.Linq;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.GameContent.UI.Elements;
 using Terraria.Localization;
-using Terraria.ModLoader;
 using Terraria.UI;
 
 namespace TeamSpectate;
@@ -15,8 +13,8 @@ internal class BossHeadButton : UIImageButton
 {
 	private readonly NPC boss;
 	private int Index => Main.npc.ToList().FindIndex(x => x == boss);
-
-	public BossHeadButton(NPC boss) : base(ModContent.Request<Texture2D>("TeamSpectate/Assets/empty", AssetRequestMode.ImmediateLoad))
+    
+	public BossHeadButton(NPC boss) : base(UISystem.EmptyButtonAsset)
 	{
 		this.boss = boss;
 	}
@@ -56,11 +54,7 @@ internal class BossHeadButton : UIImageButton
 		spriteBatch.Draw(headTexture.Value, drawpos, new Rectangle(0, 0, headTexture.Width(), headTexture.Height()), Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1f);
 
 		if (Camera.Target == Index && Camera.SpectatingBoss) {
-			// draw frame
-			spriteBatch.Draw(ModContent.Request<Texture2D>("TeamSpectate/Assets/selectedFrame", AssetRequestMode.ImmediateLoad).Value,
-				GetDimensions().Position(),
-				Color.White
-			);
+			spriteBatch.Draw(UISystem.SelectFrameAsset.Value, GetDimensions().Position(), Color.White);
 		}
 	}
 }

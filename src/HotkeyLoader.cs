@@ -3,9 +3,9 @@ using Terraria.ModLoader;
 
 namespace TeamSpectate;
 
-internal class HotkeyLoader : ModSystem
+internal class KeybindSystem : ModSystem
 {
-	public static ModKeybind? prevPlayer, nextPlayer, stopSpectating;
+	public ModKeybind? prevPlayer, nextPlayer, stopSpectating;
 
 	public override void Load()
 	{
