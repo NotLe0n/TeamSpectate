@@ -1,4 +1,4 @@
-# TeamSpectate
+# TeamSpectate ![Mod downloads badge](https://img.shields.io/endpoint?url=https%3A%2F%2Fmod-count-badge.notle0n75.workers.dev%2F%3Fmod%3DTeamSpectate)
 Team Spectate lets you view your team mates’ screen.
 This mod only works in Multiplayer. The Menu button is below the team selector.
 
