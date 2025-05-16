@@ -10,6 +10,8 @@ This mod is open source on [url=https://github.com/NotLe0n/BetterZoom]GitHub[/ur
 [b]pollen__[/b] for giving me his player render code.
 [b]bafto[/b] for multiplayer testing
 
+Why "Fixed!!"?: This mod had a stupid bug for a long time which broke the auto spectate on death feature. This is now fixed!!
+
 [hr]
 [h2]How it works:[/h2]
 
@@ -28,12 +30,20 @@ You are also able to spectate a boss by clicking its button in the same menu.
 If you die you automatically spectate the closest player (can be turned off).
 When you respawn you automatically stop spectating (can also be turned off).
 
+
 [h2]License:[/h2]
 This mod is licensed under the GNU GPLv3 license.
 If you use any code from this mod you have to open source it under the same license and give credit in your mod's description.
 
 [hr]
 [h2]Recent Changes:[/h2]
+
+[h3]v3.0[/h3]
+[list]
+[*] fixed the bug where if a player dies, all player's views get set to their nearest player, instead of just the dead player's view.
+[*] major version because the bug was that bad... sorry
+[/list]
+
 [h3]v2.6.1[/h3]
 [list]
 [*] More accurate hover text for the player buttons

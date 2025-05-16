@@ -5,6 +5,8 @@ This mod only works in Multiplayer. The Menu button is below the team selector.
 Contact me on my discord at https://discord.gg/NX4DVzz2v6 if you have any problems.
 This mod is open source on GitHub. If you have a GitHub account, please give it a star! (link is the homepage button)
 
+Why "Fixed!!"?: This mod had a stupid bug for a long time which broke the auto spectate on death feature. This is now fixed!!
+
 Special thanks:
 [c/66EEFF:Mirsario] for fixing unloaded chunks
 [c/66EEFF:pollen__] for giving me his player render code.
@@ -30,6 +32,10 @@ When you respawn you automatically stop spectating (can also be turned off).
 
 _________________________
 [c/FFE900:Recent Changes:]
+v3.0
+- fixed the bug where if a player dies, all player's views get set to their nearest player, instead of just the dead player's view.
+- major version because the bug was that bad... sorry
+
 v2.6.1
 - More accurate hover text for the player buttons
 - Dead players now get grayed out

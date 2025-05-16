@@ -8,16 +8,9 @@ using Terraria.UI;
 
 namespace TeamSpectate;
 
-internal class PlayerHeadButton : UIImageButton
+internal class PlayerHeadButton(Player player) : UIImageButton(UISystem.EmptyButtonAsset)
 {
-	private readonly Player player;
-	private string hovertext;
-    
-	public PlayerHeadButton(Player player) : base(UISystem.EmptyButtonAsset)
-	{
-		this.player = player;
-		hovertext = $"[{player.whoAmI}] {player.name}";
-	}
+	private string hovertext = $"[{player.whoAmI}] {player.name}";
 
 	public override void LeftClick(UIMouseEvent evt)
 	{
@@ -27,7 +20,7 @@ internal class PlayerHeadButton : UIImageButton
 		}
 		else {
 			// toggle target
-			if (Camera.Target == null) {
+			if (Camera.Target != player.whoAmI) {
 				Camera.SetTarget(player.whoAmI, false);
 			}
 			else {

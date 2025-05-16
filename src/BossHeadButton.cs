@@ -13,7 +13,7 @@ internal class BossHeadButton : UIImageButton
 {
 	private readonly NPC boss;
 	private int Index => Main.npc.ToList().FindIndex(x => x == boss);
-    
+
 	public BossHeadButton(NPC boss) : base(UISystem.EmptyButtonAsset)
 	{
 		this.boss = boss;

@@ -75,6 +75,10 @@ internal class Camera : ModPlayer
 		if (ModContent.GetInstance<Config>().SpectateOnDeath == false) {
 			return;
 		}
+
+		if (!Main.LocalPlayer.dead) {
+			return;
+		}
 		
 		Player? closest = Main.player.Where(x => x != Main.LocalPlayer).MinBy(x => x.position.Distance(Main.LocalPlayer.position));
 		if (closest is null) return;
