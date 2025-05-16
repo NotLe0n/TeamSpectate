@@ -38,6 +38,11 @@ If you use any code from this mod you have to open source it under the same lice
 [hr]
 [h2]Recent Changes:[/h2]
 
+[h3]v3.0.1[/h3]
+[list]
+[*] fixed a bug where if spectating a player while playing on the "constant" seed, you would still die even if there is enough light around you.
+[/list]
+
 [h3]v3.0[/h3]
 [list]
 [*] fixed the bug where if a player dies, all player's views get set to their nearest player, instead of just the dead player's view.

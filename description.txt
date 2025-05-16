@@ -32,6 +32,9 @@ When you respawn you automatically stop spectating (can also be turned off).
 
 _________________________
 [c/FFE900:Recent Changes:]
+v3.0.1
+- fixed a bug where if spectating a player while playing on the "constant" seed, you would still die even if there is enough light around you.
+
 v3.0
 - fixed the bug where if a player dies, all player's views get set to their nearest player, instead of just the dead player's view.
 - major version because the bug was that bad... sorry

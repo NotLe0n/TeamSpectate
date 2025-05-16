@@ -6,6 +6,11 @@ namespace TeamSpectate;
 
 public class TeamSpectate : Mod
 {
+	public override void Load()
+	{
+		ConstantSeedFix.Fix();
+	}
+
 	public override void Unload()
 	{
 		Camera.Untarget();
