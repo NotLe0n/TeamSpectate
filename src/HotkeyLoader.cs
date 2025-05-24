@@ -18,5 +18,6 @@ internal class KeybindSystem : ModSystem
 	{
 		nextPlayer = null;
 		prevPlayer = null;
+		stopSpectating = null;
 	}
 }
