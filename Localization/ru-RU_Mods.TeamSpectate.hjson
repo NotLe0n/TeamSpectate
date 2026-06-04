@@ -48,5 +48,10 @@ Configs: {
 			GridProperties: Параметры сетки
 			QoL: Общее
 		}
+
+		animationVelocity: {
+			Label: Скорость анимации
+			Tooltip: С какой скоростью воспроизводятся анимации
+		}
 	}
 }

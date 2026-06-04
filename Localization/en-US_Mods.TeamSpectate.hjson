@@ -48,5 +48,10 @@ Configs: {
 			GridProperties: Grid Properties
 			QoL: Quality of Life
 		}
+
+		animationVelocity: {
+			Label: Animation velocity
+			Tooltip: How fast animations play
+		}
 	}
 }

@@ -34,4 +34,9 @@ public class Config : ModConfig
 	[Range(0, 16)]
 	[DefaultValue(6)]
 	public int gridItemGap;
-}
+	
+	[Slider]
+	[Range(0.2f, 1f)]
+	[DefaultValue(.33f)]
+	public float animationVelocity;
+}

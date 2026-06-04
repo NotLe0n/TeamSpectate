@@ -48,5 +48,10 @@ Configs: {
 			GridProperties: Gittereigenschaften
 			QoL: Allgemeine
 		}
+
+		animationVelocity: {
+			Label: Animationsgeschwindigkeit
+			Tooltip: Wie schnell animationen abspielen
+		}
 	}
 }

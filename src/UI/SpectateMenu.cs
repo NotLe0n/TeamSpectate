@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using TeamSpectate.UI.Buttons;
 using Terraria;
 using Terraria.GameContent.UI.Elements;
+using Terraria.ModLoader;
 
 namespace TeamSpectate.UI;
 
@@ -16,6 +17,11 @@ internal class SpectateMenu : UIPanel
 	/// Useful to update grid items after filter button was pressed.
 	/// </summary>
 	public static bool IsUpdateRequired { get; set; }
+	
+	/// <summary>
+	/// The speed of animations
+	/// </summary>
+	private static float AnimationVelocity => MathF.Pow(ModContent.GetInstance<Config>().animationVelocity, 2);
 
 	/// <summary>
 	/// True whenever the menu is shown.
@@ -124,7 +130,7 @@ internal class SpectateMenu : UIPanel
 		// it updates outside the class,
 		// because button re-generates each tick
 		// so it need to be a static pre-calculated value
-		FilterButton.IconRotation = TeamSpectate.Lerp(FilterButton.IconRotation, FilterButton.IconRotationTarget, .08f);
+		FilterButton.IconRotation = TeamSpectate.Lerp(FilterButton.IconRotation, FilterButton.IconRotationTarget, AnimationVelocity);
 
 		// async task during opened menu should be fine
 		// this is quite a fix for bosses like
@@ -138,10 +144,10 @@ internal class SpectateMenu : UIPanel
 
 		if (IsMenuShown) {
 			Width.Set(TeamSpectate.Lerp(
-				Width.Pixels, GridInstance.GridWidth, .08f), 0);
+				Width.Pixels, GridInstance.GridWidth, AnimationVelocity), 0);
 
 			Height.Set(TeamSpectate.Lerp(
-				Height.Pixels, GridInstance.GridHeight, .08f), 0);
+				Height.Pixels, GridInstance.GridHeight, AnimationVelocity), 0);
 		}
 		else {
 			// 16f just for clarify,
@@ -156,4 +162,4 @@ internal class SpectateMenu : UIPanel
 			? -1 * (Width.Pixels + 235f)
 			: 64f, 1f); /* 64f is offset to be sure menu is beyond the screen */
 	}
-}
+}
