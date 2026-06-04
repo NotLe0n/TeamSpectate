@@ -4,24 +4,49 @@ Keybinds: {
 	Stop.DisplayName: Stop spectating
 }
 
-PlayerDead: You cannot spectate dead players
-PlayerDifferentTeam: This player is in a different party than you
-PlayerNotFound: This player doesn't exist
-SpectateBoss: Spectate Boss
+PlayerDead: Player is dead
+PlayerDifferentTeam: Player is on a different party than you
+PlayerNotFound: Player is hidden or doesn't exist
+BossHeadIndexNotFound: Boss is hidden or doesn't exist
+BossTooltip: Boss
+YouTooltip: You
+Filter: Filter
+FilterEverythingTooltip: All
+FilterPlayersTooltip: Players
+FilterBossesTooltip: Bosses
 
 Configs: {
 	Config: {
 		DisplayName: Config
-		Headers.Tweaks: Tweaks Header
 
-		RespawnSpectateOffToggle: {
+		respawnSpectateOffToggle: {
+			Tooltip: Exit spectate mode upon respawn
 			Label: Exit spectate mode upon respawn
-			Tooltip: ""
 		}
 
-		SpectateOnDeath: {
+		spectateOnDeath: {
+			Tooltip: Spectate the nearest player upon death
 			Label: Spectate the nearest player upon death
-			Tooltip: ""
+		}
+
+		gridItemGap: {
+			Tooltip: Modifies gap between items in spectate menu
+			Label: Items gap
+		}
+
+		gridPadding: {
+			Tooltip: Modifies spectate menu padding value
+			Label: Menu padding
+		}
+
+		gridMaxColumns: {
+			Tooltip: Modifies columns limit in spectate menu
+			Label: Max columns
+		}
+
+		Headers: {
+			GridProperties: Grid Properties
+			QoL: Quality of Life
 		}
 	}
 }

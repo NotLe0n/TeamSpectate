@@ -1,27 +1,52 @@
 Keybinds: {
-	PreviousPlayer.DisplayName: смотреть предыдущий игрок
-	NextPlayer.DisplayName: смотреть следующий игрок
-	Stop.DisplayName: перестань смотреть
+	PreviousPlayer.DisplayName: Предыдущий игрок
+	NextPlayer.DisplayName: Следующий игрок
+	Stop.DisplayName: Выйти из наблюдателя
 }
 
-PlayerDead: Вы не можете наблюдать за мертвыми игроками
-PlayerDifferentTeam: Этот игрок находится в другой команде, чем вы
-PlayerNotFound: Этот игрок находится в другой команде, чем вы, или не существует
-SpectateBoss: Смотреть Босс
+PlayerDead: Игрок погиб
+PlayerDifferentTeam: Игрок находится в другой команде
+PlayerNotFound: Игрок скрыт или не существует
+BossHeadIndexNotFound: Босс скрыт или не существует
+BossTooltip: Босс
+YouTooltip: Вы
+Filter: Фильтр
+FilterEverythingTooltip: Всё
+FilterPlayersTooltip: Игроки
+FilterBossesTooltip: Боссы
 
 Configs: {
 	Config: {
-		DisplayName: Настройки
-		// Headers.Tweaks: Tweaks Header
+		DisplayName: Конфигурация
 
-		RespawnSpectateOffToggle: {
-			Label: Выход из режима наблюдателя после возрождения
-			Tooltip: ""
+		respawnSpectateOffToggle: {
+			Tooltip: Выходить из режима наблюдателя после возрождения
+			Label: Выходить из режима наблюдателя после возрождения
 		}
 
-		SpectateOnDeath: {
-			Label: Наблюдайте за ближайшим игроком после смерти
-			Tooltip: ""
+		spectateOnDeath: {
+			Tooltip: Наблюдать за ближайшим игроком после смерти
+			Label: Наблюдать за ближайшим игроком после смерти
+		}
+
+		gridItemGap: {
+			Tooltip: Влияет на отступ между элементами меню
+			Label: Отступ между элементами
+		}
+
+		gridPadding: {
+			Tooltip: Влияет на глобальный отступ меню
+			Label: Отступ меню (Padding)
+		}
+
+		gridMaxColumns: {
+			Tooltip: Влияет на максимальное количество столбцов в меню
+			Label: Макс. столбцов
+		}
+
+		Headers: {
+			GridProperties: Параметры сетки
+			QoL: Общее
 		}
 	}
 }

@@ -1,6 +1,6 @@
-displayName = Team Spectate | Fixed!!
+displayName = Team Spectate
 author = NotLe0n
-version = 3.0.1
+version = 3.0.2
 hideCode = false
 hideResources = false
 includeSource = false
