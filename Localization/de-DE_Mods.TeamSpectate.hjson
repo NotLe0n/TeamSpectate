@@ -9,11 +9,11 @@ PlayerDifferentTeam: Dieser Spieler ist in einer anderen Gruppe als du
 PlayerNotFound: Spieler ist versteckt oder existiert nicht
 BossHeadIndexNotFound: Boss ist versteckt oder existiert nicht
 BossTooltip: Boss
-YouTooltip: Sie
+YouTooltip: Du
 Filter: Filtern
-FilterEverythingTooltip: Ganz
-FilterPlayersTooltip: Spielern
-FilterBossesTooltip: Bossee
+FilterEverythingTooltip: Alle
+FilterPlayersTooltip: Spieler
+FilterBossesTooltip: Bosse
 
 Configs: {
 	Config: {
@@ -31,27 +31,27 @@ Configs: {
 
 		gridItemGap: {
 			Tooltip: Ändert die Lücke zwischen Elementen im Zuschauermenü
-			Label: Artikellücke
+			Label: Lückengröße
 		}
 
 		gridPadding: {
-			Tooltip: Ändert den Füllwert des Zuschauermenüs
+			Tooltip: Ändert den Abstand zwischen dem Menü und den Knöpfen
 			Label: Menüpolsterung
 		}
 
 		gridMaxColumns: {
-			Tooltip: Ändert die Spaltenbegrenzung im Zuschauermenü
-			Label: Max Spalten
+			Tooltip: Ändert die Spaltenanzahl im Zuschauermenü
+			Label: Max. Spalten
 		}
 
 		Headers: {
 			GridProperties: Gittereigenschaften
-			QoL: Allgemeine
+			QoL: Verhalten
 		}
 
 		animationVelocity: {
 			Label: Animationsgeschwindigkeit
-			Tooltip: Wie schnell animationen abspielen
+			Tooltip: Ändert wie schnell animationen abspielen
 		}
 	}
 }
