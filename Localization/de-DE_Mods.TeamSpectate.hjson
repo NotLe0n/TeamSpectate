@@ -4,24 +4,49 @@ Keybinds: {
 	Stop.DisplayName: Zuschauen beenden
 }
 
-PlayerDead: Tote Spieler kannst du nicht zuschauen
+PlayerDead: Spieler ist tot
 PlayerDifferentTeam: Dieser Spieler ist in einer anderen Gruppe als du
-PlayerNotFound: Dieser Spieler existiert nicht
-SpectateBoss: Boss zuschauen
+PlayerNotFound: Spieler ist versteckt oder existiert nicht
+BossHeadIndexNotFound: Boss ist versteckt oder existiert nicht
+BossTooltip: Boss
+YouTooltip: Sie
+Filter: Filtern
+FilterEverythingTooltip: Ganz
+FilterPlayersTooltip: Spielern
+FilterBossesTooltip: Bossee
 
 Configs: {
 	Config: {
 		DisplayName: Einstellungen
-		// Headers.Tweaks: Tweaks Header
 
-		RespawnSpectateOffToggle: {
+		respawnSpectateOffToggle: {
+			Tooltip: Zuschauen beenden, sobald man wiederbelebt wird
 			Label: Zuschauen beenden, sobald man wiederbelebt wird
-			Tooltip: ""
 		}
 
-		SpectateOnDeath: {
+		spectateOnDeath: {
+			Tooltip: Nächsten Spieler automatisch zuschauen, sobald man stirbt
 			Label: Nächsten Spieler automatisch zuschauen, sobald man stirbt
-			Tooltip: ""
+		}
+
+		gridItemGap: {
+			Tooltip: Ändert die Lücke zwischen Elementen im Zuschauermenü
+			Label: Artikellücke
+		}
+
+		gridPadding: {
+			Tooltip: Ändert den Füllwert des Zuschauermenüs
+			Label: Menüpolsterung
+		}
+
+		gridMaxColumns: {
+			Tooltip: Ändert die Spaltenbegrenzung im Zuschauermenü
+			Label: Max Spalten
+		}
+
+		Headers: {
+			GridProperties: Gittereigenschaften
+			QoL: Allgemeine
 		}
 	}
 }

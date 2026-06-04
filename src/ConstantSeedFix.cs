@@ -18,4 +18,4 @@ public static class ConstantSeedFix
 			orig(player);
 		};
 	}
-}
+}

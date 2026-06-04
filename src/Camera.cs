@@ -28,7 +28,8 @@ internal class Camera : ModPlayer
 			}
 
 			// spectate target boss
-			Main.screenPosition = Main.npc[Target.Value].position - new Vector2(Main.screenWidth, Main.screenHeight) / 2;
+			Main.screenPosition =
+				Main.npc[Target.Value].position - new Vector2(Main.screenWidth, Main.screenHeight) / 2;
 		}
 		else {
 			if (Target >= Main.player.Length || !Main.player[Target.Value].active) {
@@ -37,14 +38,16 @@ internal class Camera : ModPlayer
 			}
 
 			// true if player is dead, myself, or in another team (except no team)
-			bool isPlayerInvalid = Main.player[Target.Value].dead || Main.player[Target.Value] == Main.LocalPlayer || (Main.player[Target.Value].team != Main.LocalPlayer.team && Main.player[Target.Value].team != 0);
+			bool isPlayerInvalid = Main.player[Target.Value].dead || Main.player[Target.Value] == Main.LocalPlayer ||
+				(Main.player[Target.Value].team != Main.LocalPlayer.team && Main.player[Target.Value].team != 0);
 			if (isPlayerInvalid) {
 				Untarget();
 				return;
 			}
 
 			// spectate target player
-			Main.screenPosition = Main.player[Target.Value].position - new Vector2(Main.screenWidth, Main.screenHeight) / 2;
+			Main.screenPosition = Main.player[Target.Value].position -
+				new Vector2(Main.screenWidth, Main.screenHeight) / 2;
 		}
 	}
 
@@ -53,7 +56,7 @@ internal class Camera : ModPlayer
 		Target = targetID;
 		SpectatingBoss = isBoss;
 	}
-	
+
 	public static void Untarget()
 	{
 		Target = null;
@@ -63,26 +66,28 @@ internal class Camera : ModPlayer
 	public override void OnRespawn()
 	{
 		base.OnRespawn();
-		if (ModContent.GetInstance<Config>().RespawnSpectateOffToggle == false) {
+		if (ModContent.GetInstance<Config>().respawnSpectateOffToggle == false) {
 			return;
 		}
+
 		Untarget();
 	}
 
 	public override void Kill(double damage, int hitDirection, bool pvp, PlayerDeathReason damageSource)
 	{
 		base.Kill(damage, hitDirection, pvp, damageSource);
-		if (ModContent.GetInstance<Config>().SpectateOnDeath == false) {
+		if (ModContent.GetInstance<Config>().spectateOnDeath == false) {
 			return;
 		}
 
 		if (!Main.LocalPlayer.dead) {
 			return;
 		}
-		
-		Player? closest = Main.player.Where(x => x != Main.LocalPlayer).MinBy(x => x.position.Distance(Main.LocalPlayer.position));
+
+		Player? closest = Main.player.Where(x => x != Main.LocalPlayer)
+			.MinBy(x => x.position.Distance(Main.LocalPlayer.position));
 		if (closest is null) return;
-		
+
 		SetTarget(closest.whoAmI, false);
 	}
 
@@ -99,9 +104,10 @@ internal class Camera : ModPlayer
 	}
 
 	private int selectedTarget;
+
 	public override void ProcessTriggers(TriggersSet triggersSet)
-    {
-        var keybinds = ModContent.GetInstance<KeybindSystem>();
+	{
+		var keybinds = ModContent.GetInstance<KeybindSystem>();
 		if (keybinds.nextPlayer is null || keybinds.prevPlayer is null || keybinds.stopSpectating is null) {
 			return;
 		}
@@ -110,12 +116,14 @@ internal class Camera : ModPlayer
 			selectedTarget--;
 			SetTarget(selectedTarget, false);
 		}
+
 		if (keybinds.nextPlayer.JustPressed && selectedTarget < Main.player.Count(p => p?.active == true)) {
 			selectedTarget++;
 			SetTarget(selectedTarget, false);
 		}
+
 		if (keybinds.stopSpectating.JustPressed) {
 			Untarget();
 		}
 	}
-}
+}
