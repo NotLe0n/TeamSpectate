@@ -22,4 +22,4 @@ internal class TeamSpectateDeadUI : UIState
 		MenuInstance.Top.Set(Main.mapStyle == 0 || Main.mapStyle == 2 ? 100 : Main.miniMapY + Main.miniMapHeight + 50,
 			0);
 	}
-}
+}
