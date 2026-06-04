@@ -103,8 +103,6 @@ internal class Camera : ModPlayer
 		}
 	}
 
-	private int selectedTarget;
-
 	public override void ProcessTriggers(TriggersSet triggersSet)
 	{
 		var keybinds = ModContent.GetInstance<KeybindSystem>();
@@ -112,18 +110,30 @@ internal class Camera : ModPlayer
 			return;
 		}
 
-		if (keybinds.prevPlayer.JustPressed && selectedTarget > 0) {
-			selectedTarget--;
-			SetTarget(selectedTarget, false);
+		if (keybinds.prevPlayer.JustPressed) {
+			int? newTarget = GetPrevPlayer(Target ?? Main.myPlayer);
+			if (!newTarget.HasValue) return;
+			SetTarget(newTarget.Value, false);
 		}
 
-		if (keybinds.nextPlayer.JustPressed && selectedTarget < Main.player.Count(p => p?.active == true)) {
-			selectedTarget++;
-			SetTarget(selectedTarget, false);
+		if (keybinds.nextPlayer.JustPressed) {
+			int? newTarget = GetNextPlayer(Target ?? Main.myPlayer);
+			if (!newTarget.HasValue) return;
+			SetTarget(newTarget.Value, false);
 		}
 
 		if (keybinds.stopSpectating.JustPressed) {
 			Untarget();
 		}
 	}
-}
+	
+	private static int? GetNextPlayer(int currentTarget)
+	{
+		return Main.player.First(x => x.whoAmI > currentTarget && TeamSpectate.IsPlayerAccessible(x))?.whoAmI;
+	}
+	
+	private static int? GetPrevPlayer(int currentTarget)
+	{
+		return Main.player.Last(x => x.whoAmI < currentTarget && TeamSpectate.IsPlayerAccessible(x))?.whoAmI;
+	}
+}

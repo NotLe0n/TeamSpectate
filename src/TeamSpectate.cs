@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using System.IO;
+using System.Linq;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -11,6 +12,14 @@ public class TeamSpectate : Mod
 	/// Filter value for a SpectateMenu instances.
 	/// </summary>
 	public static SpectateFilter SpectateFilter { get; set; } = SpectateFilter.Everything;
+
+	/// <summary>
+	/// Returns true whenever the player specified fulfills the class requirements.
+	/// </summary>
+	public static bool IsPlayerAccessible(Player player)
+	{
+		return player is { dead: false, active: true } && (player.team == Main.LocalPlayer.team || player.team == 0);
+	}
 
 	/// <summary>
 	/// Emulates Vector2.Lerp(), but for a `float` type.
@@ -46,4 +55,4 @@ public class TeamSpectate : Mod
 				break;
 		}
 	}
-}
+}

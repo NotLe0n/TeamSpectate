@@ -18,16 +18,10 @@ internal sealed class PlayerHeadButton : GridButton
 	{
 		PlayerReference = player;
 	}
-
-	/// <summary>
-	/// Returns true whenever the player specified fulfills the class requirements.
-	/// </summary>
-	private bool IsPlayerAccessible =>
-		PlayerReference is { dead: false, active: true } && (PlayerReference.team == Main.LocalPlayer.team || PlayerReference.team == 0);
 	
 	protected override string GetTooltip()
 	{
-		if (!IsPlayerAccessible) {
+		if (!TeamSpectate.IsPlayerAccessible(PlayerReference)) {
 			if (!PlayerInput.GetPressedKeys().Contains(Keys.LeftAlt)) {
 				if (PlayerReference.dead) {
 					return Language.GetTextValue("Mods.TeamSpectate.PlayerDead");
@@ -55,7 +49,7 @@ internal sealed class PlayerHeadButton : GridButton
 	{
 		base.LeftClick(evt);
 
-		if (IsPlayerAccessible && PlayerReference.whoAmI != Main.myPlayer) {
+		if (TeamSpectate.IsPlayerAccessible(PlayerReference) && PlayerReference.whoAmI != Main.myPlayer) {
 			if (Camera.Target != PlayerReference.whoAmI) {
 				Camera.SetTarget(PlayerReference.whoAmI, false);
 				SpectateMenu.IsUpdateRequired = true;
@@ -87,7 +81,7 @@ internal sealed class PlayerHeadButton : GridButton
 
 		spriteBatch.Draw(layerAsset.Value,
 			GetCenter(UIAssets.FrameAsset) - new Vector2(3f, 3f), bounds,
-			!IsPlayerAccessible ? Color.Gray : color, 0f,
+			!TeamSpectate.IsPlayerAccessible(PlayerReference) ? Color.Gray : color, 0f,
 			Vector2.Zero, 1f, SpriteEffects.None, 0);
 	}
 
